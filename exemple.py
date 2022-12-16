@@ -210,6 +210,7 @@ def trouve_murs(pos):
     Tab_Murs = gen_tab_ep_alea(n, m)
     for mur in Tab_Murs:
         if (x, y) == mur[1]:
+            return (x,y)
         
 
 #modification ferhat
