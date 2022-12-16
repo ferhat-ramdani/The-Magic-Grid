@@ -201,30 +201,59 @@ def yeux(mur, i):
     #     return "bas"
 
     if i == 1:
-        if (mur[1][1] == mur[2][1] and mur[1][2] == mur[2][2] + 1):
-            return "droite"
+        if (mur[1][0][0] == mur[1][1][0] and mur[1][0][1] == mur[1][1][1] - 1):
+            return 'gauche'
+        elif (mur[1][0][0] == mur[1][1][0] and mur[1][0][1] == mur[1][1][1] + 1):
+            return 'droite'
+        elif (mur[1][0][0] == mur[1][1][1] - 1 and mur[1][0][1] == mur[1][1][1]):
+            return 'haut'
+        elif (mur[1][0][0] == mur[1][1][1] + 1 and mur[1][0][1] == mur[1][1][1]):
+            return 'bas'
+
+    if i == 2:
+        if (mur[1][0][0] == mur[1][1][0] and mur[1][0][1] == mur[1][1][1] - 1):
+            return 'droite'
+        elif (mur[1][0][0] == mur[1][1][0] and mur[1][0][1] == mur[1][1][1] + 1):
+            return 'gauche'
+        elif (mur[1][0][0] == mur[1][1][1] - 1 and mur[1][0][1] == mur[1][1][1]):
+            return 'bas'
+        elif (mur[1][0][0] == mur[1][1][1] + 1 and mur[1][0][1] == mur[1][1][1]):
+            return 'haut'
 
 
-def trouve_murs(pos):
+
+def trouve_murs(pos, n, m):
     x, y = pos
     Tab_Murs = gen_tab_ep_alea(n, m)
+    list_voisins = {'gauche': 0, 'haut': 0, 'droite': 0, 'bas': 0}
     for mur in Tab_Murs:
-        if (x, y) == mur[1]:
-            return (x,y)
+        # print(mur)
+        if (x, y) == mur[1][0]:
+            list_voisins[yeux(mur, 1)] = [ mur[1][1], mur[0] ]
+            print(yeux(mur, 1))
+
+        elif (x, y) == mur[1][1]:
+            list_voisins[yeux(mur, 2)] = [ mur[1][0], mur[0] ]
+            print(yeux(mur, 1))
+
+    return list_voisins
         
 
-#modification ferhat
-
 def grille(n, m):
-    L = gen_tab_ep_alea(n, m, nb_murs)
+    # L = gen_tab_ep_alea(n, m)
     grille = []
     for l in range(1, n + 1):
         for c in range(1, m + 1):
             #calculer l'élement à rajouter à la grille
             pos = (l, c)
-            voisins = trouve_murs(pos)
+            voisins = trouve_murs(pos, n, m)
             cel = {
                 'pos':pos,
                 'voisins': voisins
             }
             grille.append(cel)
+
+    return grille
+
+
+grille(3, 4)
