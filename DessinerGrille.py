@@ -3,6 +3,7 @@ import Grille
 
 
 
+
 #exemple
 grille = {
     (1, 1): {'g': [(1, 1), 4], 'h': [(1, 1), 4], 'd': [(1, 2), 5], 'b': [(2, 1), 2]},
@@ -104,8 +105,8 @@ def ajoute_coor(n, m, pas):
 
 
 
-def dessiner_grille(n, m, pas):
-    grille = Grille.creer_grille(n, m)
+def dessiner_grille(grille, n, m, pas):
+    
 
     t.shape("turtle")
     t.bgcolor("black")
@@ -155,7 +156,9 @@ def dessiner_grille(n, m, pas):
 #____________partie_tests___________________
 # print( ep_mur(grille, (1, 5), 'v', 3, 4) )
 # ajoute_coor(3, 4, 70)
-dessiner_grille(7, 7, 70)
+n, m = 3, 4
+dessiner_grille(grille, n, m, 70)
 #______________end_tests___________________
+
 t.color("white")
 t.done()

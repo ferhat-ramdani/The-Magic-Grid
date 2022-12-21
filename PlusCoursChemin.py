@@ -1,5 +1,5 @@
 import Grille
-import DessinerGrille
+# import DessinerGrille
 
 #ici on va utiliser de la programmation dynamique pour retrouver UN plus cours chemin de manière optimale.
 
@@ -11,7 +11,20 @@ import DessinerGrille
 
 
 n, m = 3, 4
-G = Grille.creer_grille(n, m)
+G = {
+    (1, 1): {'g': [(1, 1), 4], 'h': [(1, 1), 4], 'd': [(1, 2), 5], 'b': [(2, 1), 2]},
+    (1, 2): {'g': [(1, 1), 2], 'h': [(1, 2), 1], 'd': [(1, 3), 5], 'b': [(2, 2), 2]}, 
+    (1, 3): {'g': [(1, 2), 1], 'h': [(1, 3), 4], 'd': [(1, 4), 2], 'b': [(2, 3), 5]}, 
+    (1, 4): {'g': [(1, 3), 5], 'h': [(1, 4), 3], 'd': [(1, 4), 1], 'b': [(2, 4), 5]}, 
+    (2, 1): {'g': [(2, 1), 1], 'h': [(1, 1), 1], 'd': [(2, 2), 3], 'b': [(3, 1), 3]}, 
+    (2, 2): {'g': [(2, 1), 4], 'h': [(1, 2), 2], 'd': [(2, 3), 1], 'b': [(3, 2), 3]}, 
+    (2, 3): {'g': [(2, 2), 2], 'h': [(1, 3), 1], 'd': [(2, 4), 4], 'b': [(3, 3), 4]}, 
+    (2, 4): {'g': [(2, 3), 5], 'h': [(1, 4), 3], 'd': [(2, 4), 5], 'b': [(3, 4), 1]}, 
+    (3, 1): {'g': [(3, 1), 5], 'h': [(2, 1), 4], 'd': [(3, 2), 3], 'b': [(3, 1), 5]}, 
+    (3, 2): {'g': [(3, 1), 2], 'h': [(2, 2), 2], 'd': [(3, 3), 1], 'b': [(3, 2), 3]}, 
+    (3, 3): {'g': [(3, 2), 3], 'h': [(2, 3), 4], 'd': [(3, 4), 1], 'b': [(3, 3), 2]}, 
+    (3, 4): {'g': [(3, 3), 2], 'h': [(2, 4), 5], 'd': [(3, 4), 3], 'b': [(3, 4), 5]}
+}
 
 
 def minimum(dico):
@@ -53,13 +66,5 @@ def plus_court_chemin(P, n, m):
 
 D = dijkstra_pred(G, (1, 1))[0]
 P = dijkstra_pred(G, (1, 1))[1]
-# print("energie minimale : ", D)
-# print(P)
-print(plus_court_chemin(P, n, m))
-
-
-DessinerGrille.dessiner_grille(G, 3, 4, 70)
-
-# d = {1: 12, 3:13, 5:14}
-# for nb in d:
-#     print(nb)
+print("energie minimale : ", D[(3, 4)])
+print("here it is : ", plus_court_chemin(P, n, m))
