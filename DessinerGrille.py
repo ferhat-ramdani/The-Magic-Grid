@@ -82,7 +82,6 @@ def ajoute_coor(n, m, pas):
 
 
 
-<<<<<<< Updated upstream
 
 
 def ajoute_coor(n, m, pas):
@@ -107,8 +106,6 @@ def ajoute_coor(n, m, pas):
 
 def dessiner_grille(n, m, pas):
     grille = Grille.creer_grille(n, m)
-=======
-def dessiner_grille(grille, n, m, pas):
 
     t.shape("turtle")
     t.bgcolor("black")
@@ -117,8 +114,6 @@ def dessiner_grille(grille, n, m, pas):
     t.goto(-300, 300)
     t.down()
 
-
->>>>>>> Stashed changes
     #dessiner les murs horizontaux
     for l in range(1, n+2):
         for c in range(1, m+1):
@@ -154,39 +149,13 @@ def dessiner_grille(grille, n, m, pas):
     ajoute_coor(n, m, pas)
     t.color("white")
     t.up()
-<<<<<<< Updated upstream
-    ajoute_coor(n, m, pas)
-=======
-    t.done()
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> Stashed changes
 
 
 
 #____________partie_tests___________________
 # print( ep_mur(grille, (1, 5), 'v', 3, 4) )
-<<<<<<< Updated upstream
 # ajoute_coor(3, 4, 70)
 dessiner_grille(7, 7, 70)
-=======
-# gr = Grille.creer_grille(2, 3)
-# dessiner_grille(gr, 2, 3, 70)
-# ajoute_coor(2, 3, 70)
->>>>>>> Stashed changes
 #______________end_tests___________________
-
 t.color("white")
-t.up()
 t.done()
