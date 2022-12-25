@@ -107,7 +107,7 @@ def creer_grille(n, m):
 
 # print(generer_ep())
 
-print(creer_grille(3, 4))
+# print(creer_grille(3, 4))
 
 # exemple de sortie de l'appel grille(3, 4):
 # grille = {

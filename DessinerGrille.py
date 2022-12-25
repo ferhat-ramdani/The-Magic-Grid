@@ -1,24 +1,28 @@
-import turtle as t
 import Grille
 
 
 
 
 #exemple
-grille = {
-    (1, 1): {'g': [(1, 1), 4], 'h': [(1, 1), 4], 'd': [(1, 2), 5], 'b': [(2, 1), 2]},
-    (1, 2): {'g': [(1, 1), 2], 'h': [(1, 2), 1], 'd': [(1, 3), 5], 'b': [(2, 2), 2]}, 
-    (1, 3): {'g': [(1, 2), 1], 'h': [(1, 3), 4], 'd': [(1, 4), 2], 'b': [(2, 3), 5]}, 
-    (1, 4): {'g': [(1, 3), 5], 'h': [(1, 4), 3], 'd': [(1, 4), 1], 'b': [(2, 4), 5]}, 
-    (2, 1): {'g': [(2, 1), 1], 'h': [(1, 1), 1], 'd': [(2, 2), 3], 'b': [(3, 1), 3]}, 
-    (2, 2): {'g': [(2, 1), 4], 'h': [(1, 2), 2], 'd': [(2, 3), 1], 'b': [(3, 2), 3]}, 
-    (2, 3): {'g': [(2, 2), 2], 'h': [(1, 3), 1], 'd': [(2, 4), 4], 'b': [(3, 3), 4]}, 
-    (2, 4): {'g': [(2, 3), 5], 'h': [(1, 4), 3], 'd': [(2, 4), 5], 'b': [(3, 4), 1]}, 
-    (3, 1): {'g': [(3, 1), 5], 'h': [(2, 1), 4], 'd': [(3, 2), 3], 'b': [(3, 1), 5]}, 
-    (3, 2): {'g': [(3, 1), 2], 'h': [(2, 2), 2], 'd': [(3, 3), 1], 'b': [(3, 2), 3]}, 
-    (3, 3): {'g': [(3, 2), 3], 'h': [(2, 3), 4], 'd': [(3, 4), 1], 'b': [(3, 3), 2]}, 
-    (3, 4): {'g': [(3, 3), 2], 'h': [(2, 4), 5], 'd': [(3, 4), 3], 'b': [(3, 4), 5]}
-}
+# grille = {
+#     (1, 1): {'g': [(1, 1), 4], 'h': [(1, 1), 4], 'd': [(1, 2), 5], 'b': [(2, 1), 2]},
+#     (1, 2): {'g': [(1, 1), 2], 'h': [(1, 2), 1], 'd': [(1, 3), 5], 'b': [(2, 2), 2]}, 
+#     (1, 3): {'g': [(1, 2), 1], 'h': [(1, 3), 4], 'd': [(1, 4), 2], 'b': [(2, 3), 5]}, 
+#     (1, 4): {'g': [(1, 3), 5], 'h': [(1, 4), 3], 'd': [(1, 4), 1], 'b': [(2, 4), 5]}, 
+#     (2, 1): {'g': [(2, 1), 1], 'h': [(1, 1), 1], 'd': [(2, 2), 3], 'b': [(3, 1), 3]}, 
+#     (2, 2): {'g': [(2, 1), 4], 'h': [(1, 2), 2], 'd': [(2, 3), 1], 'b': [(3, 2), 3]}, 
+#     (2, 3): {'g': [(2, 2), 2], 'h': [(1, 3), 1], 'd': [(2, 4), 4], 'b': [(3, 3), 4]}, 
+#     (2, 4): {'g': [(2, 3), 5], 'h': [(1, 4), 3], 'd': [(2, 4), 5], 'b': [(3, 4), 1]}, 
+#     (3, 1): {'g': [(3, 1), 5], 'h': [(2, 1), 4], 'd': [(3, 2), 3], 'b': [(3, 1), 5]}, 
+#     (3, 2): {'g': [(3, 1), 2], 'h': [(2, 2), 2], 'd': [(3, 3), 1], 'b': [(3, 2), 3]}, 
+#     (3, 3): {'g': [(3, 2), 3], 'h': [(2, 3), 4], 'd': [(3, 4), 1], 'b': [(3, 3), 2]}, 
+#     (3, 4): {'g': [(3, 3), 2], 'h': [(2, 4), 5], 'd': [(3, 4), 3], 'b': [(3, 4), 5]}
+# }
+
+
+
+
+
 
 #pos commence de (1, 1) et correspand à la position de la tortue à l'instant t
 def ep_mur(grille, pos, dir, n, m):
@@ -35,7 +39,13 @@ def ep_mur(grille, pos, dir, n, m):
         else:
             return grille[pos]['g'][1]
 
-def colorer_mur(ep):
+
+
+
+
+
+
+def colorer_mur(t, ep):
     if ep == 1:
         t.color("red")
     elif ep == 2:
@@ -55,8 +65,10 @@ def colorer_mur(ep):
 
 
 
+
+
     
-def ajoute_coor(n, m, pas):
+def ajoute_coor(t, n, m, pas=100):
     t.color("red")
     t.up()
     t.goto(-300 + pas/2, 300 - pas/2)
@@ -85,29 +97,12 @@ def ajoute_coor(n, m, pas):
 
 
 
-def ajoute_coor(n, m, pas):
-    t.color("red")
-    t.up()
-    t.goto(-300 + pas/2, 300 - pas/2)
-    t.left(90)
-    for l in range(1, n+1):
-        for c in range(1, m+1):
-            pos = "(" + str(l) + "," + str(c) + ")"
-            t.write(pos , move=False,align='center',font=('Arial',8,'bold'))
-            t.forward(pas)
-        t.backward((m)*pas)
-        t.right(90)
-        t.forward(pas)
-        t.left(90)
 
 
 
-
-
-
-def dessiner_grille(grille, n, m, pas):
+def dessiner_grille(t, grille, n, m, pas=100, speed=5):
     
-
+    t.speed(speed)
     t.shape("turtle")
     t.bgcolor("black")
     t.speed(0)
@@ -119,7 +114,7 @@ def dessiner_grille(grille, n, m, pas):
     for l in range(1, n+2):
         for c in range(1, m+1):
             ep = ep_mur(grille, (l, c), 'h', n, m)
-            colorer_mur(ep)
+            colorer_mur(t, ep)
             t.width(6 + (ep-1)*4)
             t.forward(pas)
         t.up()
@@ -137,7 +132,7 @@ def dessiner_grille(grille, n, m, pas):
     for c in range(1, m+2):
         for l in range(1, n+1):
             ep = ep_mur(grille, (l, c), 'v', n, m)
-            colorer_mur(ep)
+            colorer_mur(t, ep)
             t.width(6 + (ep-1)*4)
             t.forward(pas)
         t.up()
@@ -147,18 +142,76 @@ def dessiner_grille(grille, n, m, pas):
         t.right(90)
         t.down()
 
-    ajoute_coor(n, m, pas)
+    ajoute_coor(t, n, m, pas)
     t.color("white")
     t.up()
+    t.color("white")
+
+
+
+
+def DesssinerPCC(t, PCC, Gr, pas):
+    print(PCC)
+    t.speed(1)
+    t.color("white")
+    t.up()
+    t.goto(-300, 300)
+    t.seth(0)
+    for i in range(len(PCC) - 1):
+        ep = 0
+        x, y = 0, 0
+        l1, c1 = PCC[i]
+        l2, c2 = PCC[i+1]
+        if l1 == l2 and c1 == c2 + 1:
+            print("gauche")
+            ep = Gr[PCC[i]]['g'][1]
+            x = - 300 + (PCC[i][1] - 1) * pas
+            y = 300 - (PCC[i][0] - 1) * pas 
+            t.width(6 + (ep-1)*4)
+            print(ep)
+            t.seth(-90)
+        elif l1 == l2 + 1 and c1 == c2:
+            print("haut")
+            ep = Gr[PCC[i]]['h'][1]
+            x = - 300 + (PCC[i][1] - 1) * pas 
+            y = 300 - (PCC[i][0] - 1) * pas
+            t.width(6 + (ep-1)*4)
+            print(ep)
+            t.seth(0)
+        elif l1 == l2 and c1 == c2 - 1:
+            print("droite")
+            ep = Gr[PCC[i]]['d'][1]
+            x = pas - 300 + (PCC[i][1] - 1) * pas
+            y = 300 - (PCC[i][0] - 1) * pas
+            t.width(6 + (ep-1)*4)
+            print(ep)
+            t.seth(-90)
+        elif l1 == l2 - 1 and c1 == c2:
+            print("bas")
+            ep = Gr[PCC[i]]['b'][1]
+            x = - 300 + (PCC[i][1] - 1) * pas
+            y = - pas + 300 - (PCC[i][0] - 1) * pas
+            t.width(6 + (ep-1)*4)
+            print(ep)
+            t.seth(0)
+        print(x, y)
+        t.goto(x, y)
+        t.down()
+        t.forward(pas)
+        t.up()
+    return ep
+
 
 
 
 #____________partie_tests___________________
 # print( ep_mur(grille, (1, 5), 'v', 3, 4) )
 # ajoute_coor(3, 4, 70)
-n, m = 3, 4
-dessiner_grille(grille, n, m, 70)
+# n, m = 3, 4
+# Gr = Grille.creer_grille(n, m)
+# dessiner_grille(Gr, n, m, 70)
 #______________end_tests___________________
 
-t.color("white")
-t.done()
+
+
+
