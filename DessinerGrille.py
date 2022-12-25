@@ -71,7 +71,7 @@ def colorer_mur(t, ep):
 def ajoute_coor(t, n, m, pas=100):
     t.color("red")
     t.up()
-    t.goto(-300 + pas/2, 300 - pas/2)
+    t.goto(-750 + pas/2, 300 - pas/2)
     t.left(90)
     for l in range(1, n+1):
         for c in range(1, m+1):
@@ -107,7 +107,7 @@ def dessiner_grille(t, grille, n, m, pas=100, speed=5):
     t.bgcolor("black")
     t.speed(0)
     t.up()
-    t.goto(-300, 300)
+    t.goto(-750, 300)
     t.down()
 
     #dessiner les murs horizontaux
@@ -150,12 +150,10 @@ def dessiner_grille(t, grille, n, m, pas=100, speed=5):
 
 
 
-def DesssinerPCC(t, PCC, Gr, pas):
-    print(PCC)
-    t.speed(1)
-    t.color("white")
+def DesssinerPCC(t, PCC, Gr, pas, color, cout, speed=1,):
+    t.speed(speed)
     t.up()
-    t.goto(-300, 300)
+    t.goto(-750, 300)
     t.seth(0)
     for i in range(len(PCC) - 1):
         ep = 0
@@ -163,46 +161,58 @@ def DesssinerPCC(t, PCC, Gr, pas):
         l1, c1 = PCC[i]
         l2, c2 = PCC[i+1]
         if l1 == l2 and c1 == c2 + 1:
-            print("gauche")
             ep = Gr[PCC[i]]['g'][1]
-            x = - 300 + (PCC[i][1] - 1) * pas
+            x = -750 + (PCC[i][1] - 1) * pas
             y = 300 - (PCC[i][0] - 1) * pas 
             t.width(6 + (ep-1)*4)
-            print(ep)
             t.seth(-90)
         elif l1 == l2 + 1 and c1 == c2:
-            print("haut")
             ep = Gr[PCC[i]]['h'][1]
-            x = - 300 + (PCC[i][1] - 1) * pas 
+            x = -750 + (PCC[i][1] - 1) * pas 
             y = 300 - (PCC[i][0] - 1) * pas
             t.width(6 + (ep-1)*4)
-            print(ep)
             t.seth(0)
         elif l1 == l2 and c1 == c2 - 1:
-            print("droite")
             ep = Gr[PCC[i]]['d'][1]
-            x = pas - 300 + (PCC[i][1] - 1) * pas
+            x = pas -750 + (PCC[i][1] - 1) * pas
             y = 300 - (PCC[i][0] - 1) * pas
             t.width(6 + (ep-1)*4)
-            print(ep)
             t.seth(-90)
         elif l1 == l2 - 1 and c1 == c2:
-            print("bas")
             ep = Gr[PCC[i]]['b'][1]
-            x = - 300 + (PCC[i][1] - 1) * pas
+            x = -750 + (PCC[i][1] - 1) * pas
             y = - pas + 300 - (PCC[i][0] - 1) * pas
             t.width(6 + (ep-1)*4)
-            print(ep)
             t.seth(0)
-        print(x, y)
         t.goto(x, y)
         t.down()
-        t.forward(pas)
+        t.color(color)
+        t.forward(pas/3)
+        t.color("black")
+        t.forward(pas/3)
+        t.color(color)
+        t.forward(pas/3)
         t.up()
-    return ep
+    Ecrire_chemin_cout(t, PCC, cout)
 
 
+def Ecrire_chemin_cout(t, PCC, cout):
+    t.up()
+    t.color("white")
+    t.goto(-710, 350)
+    t.write("Chemin : ", move=True, align='left', font=('Georgia', 15, 'bold'))
+    for cel in PCC:
+        text = str(cel) + "  "
+        t.write(text , move=True,align='left',font=('Georgia',15,'bold'))
+    t.up()
+    t.goto(-710, 330)
+    t.write("Cout : " + str(cout), move=True, align='left', font=('Georgia', 15, 'bold'))
 
+def rid_t(t):
+    '''éloigner la tortue de la grille'''
+    t.up()
+    t.goto(-750, 400)
+    t.done()
 
 #____________partie_tests___________________
 # print( ep_mur(grille, (1, 5), 'v', 3, 4) )

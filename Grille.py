@@ -56,7 +56,7 @@ def creer_grille(n, m):
 
     
 
-
+    #ici, pos est un couple (ligne, colonne), ça commence à 1
     def ajouter_cel_à_grille(pos):
         '''fonction qui prépare la cellule courante sour forme d'un dicionnaire, et le rajoute à la grille'''
         
@@ -65,12 +65,14 @@ def creer_grille(n, m):
         if pos[1] == 1:
             cel['g'] = [ pos, generer_ep() ]
         else:
-            cel['g'] = [ (pos[0], pos[1] - 1), generer_ep() ]
+            pos_g = (pos[0], pos[1] - 1)
+            cel['g'] = [ pos_g, grille[pos_g]['d'][1] ] #ici grille[pos_g]['d'][1] correspond à l'ep du mur d de la cel gauche
 
         if pos[0] == 1:
             cel['h'] = [ pos, generer_ep() ]
         else:
-            cel['h'] = [ (pos[0] - 1, pos[1]), generer_ep() ]
+            pos_h = (pos[0] - 1, pos[1])
+            cel['h'] = [ pos_h, grille[pos_h]['b'][1] ]
 
         if pos[1] == m:
             cel['d'] = [ pos, generer_ep() ]

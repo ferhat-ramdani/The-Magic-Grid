@@ -93,16 +93,17 @@ def bellman_ford(G, s):
 
 def plus_court_chemin(G, n, m, algo='jidks'):
     if algo == 'bel':
-        P = bellman_ford(G, (1, 1))[1]
+        d, P = bellman_ford(G, (1, 1))
     else:
         P = dijkstra_pred(G, (1, 1))[1]
+    cout = d[(n, m)]
     cel = (n, m)
     c = [cel]
     while cel != (1, 1):
         c.append(P[cel])
         cel = P[cel]
     c.reverse()
-    return c
+    return c, cout
 
 grille = {
     (1, 1): {'g': [(1, 1), 4], 'h': [(1, 1), 4], 'd': [(1, 2), 5], 'b': [(2, 1), 2]},
