@@ -1,6 +1,6 @@
 import Grille
 
-G = Grille.creer_grille(3, 4)
+G = Grille.creer_grille(2, 2)
 for cel in G:
     print( "(" + str(cel[0]) + "," + str(cel[1]) + ")" )
 for cel in G:

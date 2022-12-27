@@ -8,21 +8,32 @@
 
 #on va respecter la structure d'une liste d'adjacence, la grille aura donc pour structure:
 #un dictionnaire dont les atribus sont les sommets, et les valeurs sont les (aretes + poids), i.e:
+
+
+grille = { 
+    (1, 1): {
+        'g': [(1, 1), 1],
+        'h' : [(1, 1), 1],
+        'd' : [(1, 2), 5],
+        'b' : [(1, 5), 2]
+    },
+    (1, 2): {
+        'g': [(1, 1), 5],
+        'h' : [(1, 2), 2],
+        'd' : [(1, 3), 1],
+        'b' : [(1, 5), 3]
+    },
+    # { ... }
+}
+
+
+
 # grille = { 
-#     (1, 1): {
-#         'g': [(1, 1), 1],
-#         'h' : [(1, 1), 1],
-#         'd' : [(1, 2), 5],
-#         'b' : [(1, 5), 2]
-#     },
-#     (1, 2): {
-#         'g': [(1, 1), 5],
-#         'h' : [(1, 2), 2],
-#         'd' : [(1, 3), 1],
-#         'b' : [(1, 5), 3]
-#     },
-#     # { ... }
+#     (1, 1) : [1, 1, 5, 2],
+#     (1, 2) : [5, 2, 1, 3],
+#     #...
 # }
+
 
 
 
@@ -35,7 +46,7 @@ from random import randint as rnd
 
 
 def generer_ep():
-    '''fonciton qui une épaisseur généré aléatoirement, entre 1 et 5'''
+    '''fonction qui une épaisseur généré aléatoirement, entre 1 et 5'''
     return rnd(1, 5)
 
 
@@ -48,7 +59,7 @@ def generer_ep():
 #n: nombre de lignes
 #m: nombre de colonnes
 def creer_grille(n, m):
-    '''fonciton qui crée la grille et la retourne'''
+    '''fonction qui crée la grille et la retourne'''
 
     #initailisation du dictionnaire grille:
     grille = {}

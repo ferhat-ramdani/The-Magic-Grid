@@ -105,7 +105,6 @@ def dessiner_grille(t, grille, n, m, pas=100, speed=5):
     t.speed(speed)
     t.shape("turtle")
     t.bgcolor("black")
-    t.speed(0)
     t.up()
     t.goto(-750, 300)
     t.down()
