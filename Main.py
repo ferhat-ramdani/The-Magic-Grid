@@ -3,7 +3,7 @@ import Grille as G
 import DessinerGrille as DG
 import  PlusCoursChemin as PCC
 
-n, m = 3, 4
+n, m = 7, 15
 maGrille = G.creer_grille(n, m)
 DG.dessiner_grille(t, maGrille, n, m,100, 11)
 pcc_bel, cout = PCC.plus_court_chemin(maGrille, n, m, 'bel')
