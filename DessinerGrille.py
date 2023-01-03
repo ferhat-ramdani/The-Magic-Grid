@@ -35,7 +35,7 @@ def ep_mur(grille, pos, dir, n, m):
             return grille[pos]['h'][1]
     elif dir == 'v':
         if pos[1] == m+1:
-            return grille[(pos[0], m)]['b'][1]
+            return grille[(pos[0], m)]['d'][1]
         else:
             return grille[pos]['g'][1]
 

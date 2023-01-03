@@ -96,6 +96,7 @@ def plus_court_chemin(G, n, m, algo='jidks'):
         d, P = bellman_ford(G, (1, 1))
     else:
         d, P = dijkstra_pred(G, (1, 1))
+    
     cout = d[(n, m)]
     cel = (n, m)
     c = [cel]
