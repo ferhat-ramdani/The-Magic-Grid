@@ -1,43 +1,19 @@
 import Grille
 
-
-
-
-#exemple
-# grille = {
-#     (1, 1): {'g': [(1, 1), 4], 'h': [(1, 1), 4], 'd': [(1, 2), 5], 'b': [(2, 1), 2]},
-#     (1, 2): {'g': [(1, 1), 2], 'h': [(1, 2), 1], 'd': [(1, 3), 5], 'b': [(2, 2), 2]}, 
-#     (1, 3): {'g': [(1, 2), 1], 'h': [(1, 3), 4], 'd': [(1, 4), 2], 'b': [(2, 3), 5]}, 
-#     (1, 4): {'g': [(1, 3), 5], 'h': [(1, 4), 3], 'd': [(1, 4), 1], 'b': [(2, 4), 5]}, 
-#     (2, 1): {'g': [(2, 1), 1], 'h': [(1, 1), 1], 'd': [(2, 2), 3], 'b': [(3, 1), 3]}, 
-#     (2, 2): {'g': [(2, 1), 4], 'h': [(1, 2), 2], 'd': [(2, 3), 1], 'b': [(3, 2), 3]}, 
-#     (2, 3): {'g': [(2, 2), 2], 'h': [(1, 3), 1], 'd': [(2, 4), 4], 'b': [(3, 3), 4]}, 
-#     (2, 4): {'g': [(2, 3), 5], 'h': [(1, 4), 3], 'd': [(2, 4), 5], 'b': [(3, 4), 1]}, 
-#     (3, 1): {'g': [(3, 1), 5], 'h': [(2, 1), 4], 'd': [(3, 2), 3], 'b': [(3, 1), 5]}, 
-#     (3, 2): {'g': [(3, 1), 2], 'h': [(2, 2), 2], 'd': [(3, 3), 1], 'b': [(3, 2), 3]}, 
-#     (3, 3): {'g': [(3, 2), 3], 'h': [(2, 3), 4], 'd': [(3, 4), 1], 'b': [(3, 3), 2]}, 
-#     (3, 4): {'g': [(3, 3), 2], 'h': [(2, 4), 5], 'd': [(3, 4), 3], 'b': [(3, 4), 5]}
-# }
-
-
-
-
-
-
-#pos commence de (1, 1) et correspand à la position de la tortue à l'instant t
-def ep_mur(grille, pos, dir, n, m):
+#pos commence de (1, 1) et correspand à la position de la tortue
+def ep_mur(grille, pos, dir, n, m): #n: nombre de lignes  #m: nombre de colonnes
     '''fonction qui prend en paramètre une grille, la position de la tortue et la direction : horizontale ou verticale, 
     et retourne l'épaisseur du mur à dessiner'''
-    if dir == 'h':
-        if pos[0] == n+1:
-            return grille[(n, pos[1])]['b'][1]
-        else:
-            return grille[pos]['h'][1]
-    elif dir == 'v':
-        if pos[1] == m+1:
-            return grille[(pos[0], m)]['d'][1]
-        else:
-            return grille[pos]['g'][1]
+    if dir == 'h': #si la direction est horizontale
+        if pos[0] == n+1: #si la tortue se trouve à la ligne n+1
+            return grille[(n, pos[1])]['b'][1] #on retourne l'épaisseur du mur du bas de la cellule de la dérnière ligne et même colonne que la tortue
+        else: #sinon
+            return grille[pos]['h'][1] #on retourne l'épaisseur du mur du haut à la même position que celle de la tortue
+    elif dir == 'v': #si la direction est verticale
+        if pos[1] == m+1: #si la tortue se trouve à la colonne m+1
+            return grille[(pos[0], m)]['d'][1] #on retourne l'épaisseur du mur droit de la cellule de la dérnière colonne et ayant la même ligne que la tortue
+        else: #sinon
+            return grille[pos]['g'][1] #on retourne l'épaisseur du mur gauche à la même position que celle de la tortue
 
 
 
@@ -46,16 +22,18 @@ def ep_mur(grille, pos, dir, n, m):
 
 
 def colorer_mur(t, ep):
-    if ep == 1:
-        t.color("red")
-    elif ep == 2:
-        t.color("lime")
-    elif ep == 3:
-        t.color("skyblue")
-    elif ep == 4:
-        t.color("blue")
-    elif ep == 5:
-        t.color("yellow")
+    '''Fonction prenant en paramètre une instance du module 'turtle', une épaisseur et défini une ceraine couleur pour t'''
+    #les choix des couleurs sont pris arbitrairement
+    if ep == 1: #si l'épaisseur est 1
+        t.color("red") #on met la couleur de la tortue au rouge
+    elif ep == 2:  #si l'épaisseur est 2
+        t.color("lime") #on met la couleur de la tortue au vert citron
+    elif ep == 3:  #si l'épaisseur est 3
+        t.color("skyblue") #on met la couleur de la tortue au blue ciel
+    elif ep == 4:  #si l'épaisseur est 4
+        t.color("blue") #on met la couleur de la tortue au blue
+    elif ep == 5:  #si l'épaisseur est 5
+        t.color("yellow") #on met la couleur de la tortue au jaune
 
 
 
@@ -69,19 +47,20 @@ def colorer_mur(t, ep):
 
     
 def ajoute_coor(t, n, m, pas=100):
-    t.color("red")
-    t.up()
-    t.goto(-750 + pas/2, 300 - pas/2)
-    t.left(90)
-    for l in range(1, n+1):
-        for c in range(1, m+1):
-            pos = "(" + str(l) + "," + str(c) + ")"
-            t.write(pos , move=False,align='center',font=('Arial',8,'bold'))
-            t.forward(pas)
-        t.backward((m)*pas)
-        t.right(90)
-        t.forward(pas)
-        t.left(90)
+    '''Fonction qui dessine les coordonnées sous la forme (ligne, colonnes) au centre de chaque cellule de la grille'''
+    t.color("red") #on change la couleur vers le rouge
+    t.up() #on empeche la tortue de dessiner dérière elle
+    t.goto(-750 + pas/2, 300 - pas/2) #on met la tortue à la position initiale (-750, 300), puis on la décale de 'pas/2' pour la centrer
+    t.seth(0) #on dirige la tortue vers la gauche
+    for l in range(1, n+1): #on parcours les lignes de la grille
+        for c in range(1, m+1): #on parcours les colonnes de la grille
+            pos = "(" + str(l) + "," + str(c) + ")" #on prépare le texte : '(ligne, colonne)'
+            t.write(pos , move=False,align='center',font=('Arial',8,'bold')) #on écrit le texte
+            t.forward(pas) #on avance d'un pas
+        t.backward((m)*pas) #une fois la ligne finie, on recule de m pas
+        t.right(90) #on tourne vers la droite (direction vers le bas)
+        t.forward(pas) #on avance d'un pas
+        t.left(90) #on tourne vers la gauche (direction vers la droite)
 
 
 
@@ -101,36 +80,38 @@ def ajoute_coor(t, n, m, pas=100):
 
 
 def dessiner_grille(t, grille, n, m, pas=100, speed=5):
-    
-    t.speed(speed)
-    t.shape("turtle")
-    t.bgcolor("black")
-    t.up()
-    t.goto(-750, 300)
-    t.down()
+    '''Fonction qui dessine la grille, les paramètres 'pas' et 'speed' sont optionnelles, ils décident des dimentions de la cellule et de la vitesse de la tortue '''
+    t.speed(speed) #on change la vitesse de la tortue
+    t.shape("turtle") #on change la forme de la tortue
+    t.bgcolor("black") #on change le font de la fenêtre sur laquelle déssine la tortue vers le noir
+    t.up() #on empêche la tortue de dessiner dérière elle
+    t.goto(-750, 300) #on positionne la tortue à (-750, 300)
+    t.down() #la tortue désormais trace le chemin dérière elle
 
-    #dessiner les murs horizontaux
-    for l in range(1, n+2):
-        for c in range(1, m+1):
-            ep = ep_mur(grille, (l, c), 'h', n, m)
-            colorer_mur(t, ep)
-            t.width(6 + (ep-1)*4)
-            t.forward(pas)
-        t.up()
-        t.backward(m*pas)
-        t.right(90)
-        t.forward(pas)
-        t.left(90)
-        t.down()
+    #DESSIN DES MURS HORIZONTAUX
+    for l in range(1, n+2): #parcours des lignes de la grille
+        for c in range(1, m+1): #parcours des colonnes de la grille
+            ep = ep_mur(grille, (l, c), 'h', n, m) #on stock l'épaisseur du mur haut de la cellule courante
+            colorer_mur(t, ep) #on ajuste la couleur
+            t.width(6 + (ep-1)*4) #on amplifie l'épaisseur à la l'aide de la transformation 6 + (ep-1)*4, puis on l'applique à la tortue
+            t.forward(pas) #on trace le mur haut
+        t.up() #on arrete de dessiner
+        t.backward(m*pas) #on recule de m pas, pour démarer le dessin de la ligne prochaine
+        t.right(90) #on tourne vers le bas
+        t.forward(pas) #on avance vers la ligne prochaine
+        t.left(90) #on tourne à droite
+        t.down() #on commence à tracer
 
-    t.up()
-    t.right(90)
-    t.backward((n+1)*pas)
-    t.down()
+    #DESSIN DES MURS HORIZONTAUX
+    t.up() #on arrête de tracer
+    t.right(90) #on tourne vers le bas
+    t.backward((n+1)*pas) #on recule de n+1 pas, pour retourner vers la position de départ en haut à gauche
+    t.down() #on commence à tracer
 
-    for c in range(1, m+2):
-        for l in range(1, n+1):
-            ep = ep_mur(grille, (l, c), 'v', n, m)
+
+    for c in range(1, m+2): #parcours de colonnes
+        for l in range(1, n+1): #parcours de lignes
+            ep = ep_mur(grille, (l, c), 'v', n, m) #
             colorer_mur(t, ep)
             t.width(6 + (ep-1)*4)
             t.forward(pas)

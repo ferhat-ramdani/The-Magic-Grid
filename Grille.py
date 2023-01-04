@@ -1,52 +1,10 @@
-#ceci sera par la suite une classe portant le nom 'Grille"
-#tu trouvera une autre manière (que je juge plus simple) de coder la class grille
-#on utilisera un graph non orieté pondéré comme structure de donnée pour coder la dite "grille"
-#les sommets du graphe seront les cellules de la grille, ils seront identifiés par leur position
-#les aretes du graphe représentent les murs séparant les deux céllules, ces dérières corresponderant
-#aux sommets adjacents de l'arete. Enfin le poids de chaque arete repésentera l'épaisseur du mur 
-#correspondant
-
-#on va respecter la structure d'une liste d'adjacence, la grille aura donc pour structure:
-#un dictionnaire dont les atribus sont les sommets, et les valeurs sont les (aretes + poids), i.e:
-
-
-grille = { 
-    (1, 1): {
-        'g': [(1, 1), 1],
-        'h' : [(1, 1), 1],
-        'd' : [(1, 2), 5],
-        'b' : [(1, 5), 2]
-    },
-    (1, 2): {
-        'g': [(1, 1), 5],
-        'h' : [(1, 2), 2],
-        'd' : [(1, 3), 1],
-        'b' : [(1, 5), 3]
-    },
-    # { ... }
-}
-
-
-
-# grille = { 
-#     (1, 1) : [1, 1, 5, 2],
-#     (1, 2) : [5, 2, 1, 3],
-#     #...
-# }
-
-
-
-
-
 from random import randint as rnd
 
 
 
 
-
-
 def generer_ep():
-    '''fonction qui une épaisseur généré aléatoirement, entre 1 et 5'''
+    '''fonction qui retourne une épaisseur généré aléatoirement, entre 1 et 5'''
     return rnd(1, 5)
 
 
@@ -56,62 +14,45 @@ def generer_ep():
 
 
 
-#n: nombre de lignes
-#m: nombre de colonnes
-def creer_grille(n, m):
+
+def creer_grille(n, m): #n: nombre de lignes  #m: nombre de colonnes
     '''fonction qui crée la grille et la retourne'''
+    grille = {} #initailisation du dictionnaire grille:
 
-    #initailisation du dictionnaire grille:
-    grille = {}
+    def ajouter_cel_à_grille(pos): #on considère que 'pos' est un couple (ligne, colonne), on commence par 1
+        '''fonction qui prends la position d'une cellule, et rajoute la valeur de la cellule correspondante à la grille'''
+        cel = {} #on ititialise la cellue 'cel' à ajouter à 'grille'
 
+        if pos[1] == 1: #si on est en première colonne
+            cel['g'] = [ pos, generer_ep() ] #on ajoute le mur gauche à 'cel', ayant la forme: [position, épaisseur]
+        else: #s'il ne s'agit pas de la première colonne
+            pos_g = (pos[0], pos[1] - 1) #'pos_g' est la position de la cellule à gauche de 'pos'
+            cel['g'] = [ pos_g, grille[pos_g]['d'][1] ] #le mur gauche aura pour position 'cel_g', et pour ép. celle du mur droit de 'cel_g'
 
-    
+        if pos[0] == 1: #si on est en première ligne
+            cel['h'] = [ pos, generer_ep() ] # on ajoute le mur du haut à 'cel'
+        else: #sinon
+            pos_h = (pos[0] - 1, pos[1]) #'pos_b' est la position de la cellule au dessus de 'pos'
+            cel['h'] = [ pos_h, grille[pos_h]['b'][1] ] # le mur du haut aura pour position 'cel_b', et pour ép. celle du mur du bas de 'cel_b'
 
-    #ici, pos est un couple (ligne, colonne), ça commence à 1
-    def ajouter_cel_à_grille(pos):
-        '''fonction qui prépare la cellule courante sour forme d'un dicionnaire, et le rajoute à la grille'''
-        
-        cel = {}
-
-        if pos[1] == 1:
-            cel['g'] = [ pos, generer_ep() ]
+        if pos[1] == m: #si on est en dérnière colonne
+            cel['d'] = [ pos, generer_ep() ] #on ajoute le mur droit à 'cel'
         else:
-            pos_g = (pos[0], pos[1] - 1)
-            cel['g'] = [ pos_g, grille[pos_g]['d'][1] ] #ici grille[pos_g]['d'][1] correspond à l'ep du mur d de la cel gauche
+            cel['d'] = [ (pos[0], pos[1] + 1), generer_ep() ] #le mur droit aura la position de la cellule à droite, et une épaisseur générée
 
-        if pos[0] == 1:
-            cel['h'] = [ pos, generer_ep() ]
+        if pos[0] == n: #si on est en dérnière ligne
+            cel['b'] = [ pos, generer_ep() ] #on ajoute le mur du bas à 'cel'
         else:
-            pos_h = (pos[0] - 1, pos[1])
-            cel['h'] = [ pos_h, grille[pos_h]['b'][1] ]
-
-        if pos[1] == m:
-            cel['d'] = [ pos, generer_ep() ]
-        else:
-            cel['d'] = [ (pos[0], pos[1] + 1), generer_ep() ]
-
-        if pos[0] == n:
-            cel['b'] = [ pos, generer_ep() ]
-        else:
-            cel['b'] = [ (pos[0] + 1, pos[1]), generer_ep() ]
+            cel['b'] = [ (pos[0] + 1, pos[1]), generer_ep() ] #le mur du bas aura la position de la cellule en bas, et une épaisseur générée
 
 
-        grille[pos] = cel
-        return cel
+        grille[pos] = cel #on ajoute la cellule 'cel' à la 'grille'
+        return cel #on retourne la cellule
 
-
-    
-
-
-
-    #parcourir les lignes, puis les colonnes de la grille:
-    for l in range(1, n+1):
-        for c in range(1, m+1):
-            ajouter_cel_à_grille( (l, c) )
-    return grille
-
-
-
+    for l in range(1, n+1): #on parcours les lignes de la grille
+        for c in range(1, m+1): #on parcours les colonnes de la grille
+            ajouter_cel_à_grille( (l, c) ) #on ajoute la cellule dont la position sur la grille est '(l, c)'
+    return grille #on retourne la grille
 
 
 
@@ -123,18 +64,20 @@ def creer_grille(n, m):
 # print(creer_grille(3, 4))
 
 # exemple de sortie de l'appel grille(3, 4):
+
 # grille = {
-#     (1, 1): {'g': [(1, 1), 4], 'h': [(1, 1), 4, True], 'd': [(1, 2), 5], 'b': [(2, 1), 2]},
-#     (1, 2): {'g': [(1, 1), 2], 'h': [(1, 2), 1], 'd': [(1, 3), 5], 'b': [(2, 2), 2]}, 
-#     (1, 3): {'g': [(1, 2), 1], 'h': [(1, 3), 4], 'd': [(1, 4), 2], 'b': [(2, 3), 5]}, 
-#     (1, 4): {'g': [(1, 3), 5], 'h': [(1, 4), 3], 'd': [(1, 4), 1], 'b': [(2, 4), 5]}, 
-#     (2, 1): {'g': [(2, 1), 1], 'h': [(1, 1), 1], 'd': [(2, 2), 3], 'b': [(3, 1), 3]}, 
-#     (2, 2): {'g': [(2, 1), 4], 'h': [(1, 2), 2, True], 'd': [(2, 3), 1], 'b': [(3, 2), 3]}, 
-#     (2, 3): {'g': [(2, 2), 2], 'h': [(1, 3), 1], 'd': [(2, 4), 4], 'b': [(3, 3), 4]}, 
-#     (2, 4): {'g': [(2, 3), 5], 'h': [(1, 4), 3], 'd': [(2, 4), 5], 'b': [(3, 4), 1]}, 
-#     (3, 1): {'g': [(3, 1), 5], 'h': [(2, 1), 4], 'd': [(3, 2), 3], 'b': [(3, 1), 5]}, 
-#     (3, 2): {'g': [(3, 1), 2], 'h': [(2, 2), 2, True], 'd': [(3, 3), 1], 'b': [(3, 2), 3]}, 
-#     (3, 3): {'g': [(3, 2), 3], 'h': [(2, 3), 4], 'd': [(3, 4), 1], 'b': [(3, 3), 2]}, 
-#     (3, 4): {'g': [(3, 3), 2], 'h': [(2, 4), 5], 'd': [(3, 4), 3], 'b': [(3, 4), 5]}
+#     (1, 1) : {'g': [(1, 1), 5], 'h': [(1, 1), 5], 'd': [(1, 2), 3], 'b': [(2, 1), 2]},
+#     (1, 2) : {'g': [(1, 1), 3], 'h': [(1, 2), 2], 'd': [(1, 3), 3], 'b': [(2, 2), 2]},
+#     (1, 3) : {'g': [(1, 2), 3], 'h': [(1, 3), 4], 'd': [(1, 4), 2], 'b': [(2, 3), 4]},
+#     (1, 4) : {'g': [(1, 3), 2], 'h': [(1, 4), 5], 'd': [(1, 4), 4], 'b': [(2, 4), 4]},
+#     (2, 1) : {'g': [(2, 1), 2], 'h': [(1, 1), 2], 'd': [(2, 2), 1], 'b': [(3, 1), 5]},
+#     (2, 2) : {'g': [(2, 1), 1], 'h': [(1, 2), 2], 'd': [(2, 3), 3], 'b': [(3, 2), 1]},
+#     (2, 3) : {'g': [(2, 2), 3], 'h': [(1, 3), 4], 'd': [(2, 4), 3], 'b': [(3, 3), 4]},
+#     (2, 4) : {'g': [(2, 3), 3], 'h': [(1, 4), 4], 'd': [(2, 4), 5], 'b': [(3, 4), 3]},
+#     (3, 1) : {'g': [(3, 1), 4], 'h': [(2, 1), 5], 'd': [(3, 2), 1], 'b': [(3, 1), 3]},
+#     (3, 2) : {'g': [(3, 1), 1], 'h': [(2, 2), 1], 'd': [(3, 3), 3], 'b': [(3, 2), 1]},
+#     (3, 3) : {'g': [(3, 2), 3], 'h': [(2, 3), 4], 'd': [(3, 4), 5], 'b': [(3, 3), 3]},
+#     (3, 4) : {'g': [(3, 3), 5], 'h': [(2, 4), 3], 'd': [(3, 4), 2], 'b': [(3, 4), 4]}
 # }
+
 #_______________fin tests__________________

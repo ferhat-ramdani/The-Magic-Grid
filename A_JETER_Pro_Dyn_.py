@@ -1,3 +1,5 @@
+#ici j'éssai d'implémenter un algo qui utilise de la programmation dynamique
+
 #on utilisera dans ce modo de la programation dynamique
 """Cette classe sert à quelque Chose ou pas Du Tout ?"""
 import Grille as G
@@ -29,5 +31,5 @@ def dynamique_const(grille, n, m):
             if l == 1 and c == 1:
                 Tab_PCC.append( [ [(1, 1)], 0 ] )
             elif l == 1 :
-                chemin = #je ne sais plus !
+                chemin = 0 #je ne sais plus !
                 Tab_PCC.append( [ chemin, cout + grille[(l,c)]['g'][2] ] )

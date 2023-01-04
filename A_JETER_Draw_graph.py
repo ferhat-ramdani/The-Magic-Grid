@@ -1,3 +1,6 @@
+#classe pas du tout importante, 
+#dans cette classe, j'éssaie d'écrire sur la consolle une structure de donnée, dont j'aurai besoin plus tard.
+
 import Grille
 
 G = Grille.creer_grille(2, 2)
