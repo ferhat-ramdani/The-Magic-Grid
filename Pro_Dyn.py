@@ -1,5 +1,5 @@
 #on utilisera dans ce modo de la programation dynamique
-
+"""Cette classe sert à quelque Chose ou pas Du Tout ?"""
 import Grille as G
 
 # grille = { 

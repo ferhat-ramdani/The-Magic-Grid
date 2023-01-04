@@ -17,3 +17,6 @@ enrich.adapter_dessin(t,maGrille)
 pcc_non_opt, cout_non_opt = b.efficace_pas_opti(maGrille, n, m)
 DG.DesssinerPCC(t, pcc_non_opt, maGrille, 70, "gray", cout_non_opt, 11)
 DG.rid_t(t)
+
+"""Tu retrouveras ici des tests que j'ai essayé de faire mais qui ne fonctionne pas le problème 
+vien peut etre de l'importation des classe bBonus ou de Enrichir_Grille ?"""
