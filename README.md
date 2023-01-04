@@ -12,5 +12,5 @@ Question 1d : On garde l'algo de Dijkstra ou on le remplace par celui de Bellman
 
 pour la réponse à la question d de la partie 3, je pense qu'on peut mettre Bellman-Ford, en terme modifications sur le rapport, on changera presque rien. Je m'occupe de la modification.
 
-#Mise à jour:
+# Mise à jour:
 j'ai ajouté la classe **APPLICATION**, c'est là que je met les tests de toutes les fonctions de toutes les classes, je l'ai pas encore terminé
