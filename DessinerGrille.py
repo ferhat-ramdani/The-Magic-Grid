@@ -173,20 +173,32 @@ def DesssinerPCC(t, PCC, Gr, pas, color, cout, speed=1,):
         t.color(color)
         t.forward(pas/3)
         t.up()
-    Ecrire_chemin_cout(t, PCC, cout)
+    Ecrire_chemin_cout(t, PCC, cout, 2)
 
 
-def Ecrire_chemin_cout(t, PCC, cout):
-    t.up()
-    t.color("white")
-    t.goto(-710, 350)
-    t.write("Chemin : ", move=True, align='left', font=('Georgia', 15, 'bold'))
-    for cel in PCC:
-        text = str(cel) + "  "
-        t.write(text , move=True,align='left',font=('Georgia',15,'bold'))
-    t.up()
-    t.goto(-710, 330)
-    t.write("Cout : " + str(cout), move=True, align='left', font=('Georgia', 15, 'bold'))
+def Ecrire_chemin_cout(t, PCC, cout, pos_i):
+    if pos_i == 1:
+        t.up()
+        t.color("white")
+        t.goto(-710, 375)
+        t.write("Chemin : ", move=True, align='left', font=('Georgia', 15, 'bold'))
+        for cel in PCC:
+            text = str(cel) + "  "
+            t.write(text , move=True,align='left',font=('Georgia',15,'bold'))
+        t.up()
+        t.goto(-710, 355)
+        t.write("Cout : " + str(cout), move=True, align='left', font=('Georgia', 15, 'bold'))
+    else:
+        t.up()
+        t.color("white")
+        t.goto(-710, 335)
+        t.write("Chemin : ", move=True, align='left', font=('Georgia', 15, 'bold'))
+        for cel in PCC:
+            text = str(cel) + "  "
+            t.write(text , move=True,align='left',font=('Georgia',15,'bold'))
+        t.up()
+        t.goto(-710, 315)
+        t.write("Cout : " + str(cout), move=True, align='left', font=('Georgia', 15, 'bold'))
 
 def rid_t(t):
     '''éloigner la tortue de la grille'''
