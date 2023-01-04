@@ -2,6 +2,8 @@ import turtle as t
 import Grille as G
 import DessinerGrille as DG
 import  PlusCoursChemin as PCC
+import Enrichir_Grille as enrich
+import Bonus as b
 
 n, m = 3, 4
 pas = 100
