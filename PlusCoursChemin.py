@@ -1,19 +1,3 @@
-
-# import Grille
-#ici on va utiliser de la programmation dynamique pour retrouver UN plus cours chemin de manière optimale.
-
-#relation de récurence: le plus cours chemin pour atteindre (i, j) != (1, 1)
-    # - si i = 1 : le chemin de (i-1, j) + mur_gauche
-    # - si j = 1 : le chemin de (i, j-1) + mur_haut
-    # - sinon : on calcule le cout minimal entre cout_haut et cout_gauche,
-    #     la réponse est : le chemin correspondant + mur_correspondant
-
-
-
-
-n, m = 3, 4
-
-
 def minimum(dico):
     m=float('inf')
     for k in dico:
@@ -23,25 +7,7 @@ def minimum(dico):
     return i
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-def dijkstra_pred(G,s):
+def dijkstra(G,s):
     D={} 
     d={k: float('inf') for k in G} 
     d[s]=0 
@@ -49,9 +15,7 @@ def dijkstra_pred(G,s):
     while len(d)>0: 
         k=minimum(d) 
         for mur in G[k]: 
-            cel_v = G[k][mur][0]
-            ep = G[k][mur][1]
-            # cel_v, ep = G[k][mur]
+            cel_v, ep = G[k][mur]
             if cel_v not in D:
                 if d[cel_v]>d[k]+ep:
                     d[cel_v]=d[k]+ep
@@ -78,24 +42,11 @@ def bellman_ford(G, s):
     return d, P
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-def plus_court_chemin(G, n, m, algo='jidks'):
+def plus_court_chemin(G, n, m, algo='dij'):
     if algo == 'bel':
         d, P = bellman_ford(G, (1, 1))
     else:
-        d, P = dijkstra_pred(G, (1, 1))
+        d, P = dijkstra(G, (1, 1))
     
     cout = d[(n, m)]
     cel = (n, m)

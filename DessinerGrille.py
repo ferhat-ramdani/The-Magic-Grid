@@ -91,7 +91,7 @@ def dessiner_grille(t, grille, n, m, pas=100, speed=5):
     #DESSIN DES MURS HORIZONTAUX
     for l in range(1, n+2): #parcours des lignes de la grille
         for c in range(1, m+1): #parcours des colonnes de la grille
-            ep = ep_mur(grille, (l, c), 'h', n, m) #on stock l'épaisseur du mur haut de la cellule courante
+            ep = ep_mur(grille, (l, c), 'h', n, m) #on stoque l'épaisseur du mur haut de la cellule courante
             colorer_mur(t, ep) #on ajuste la couleur
             t.width(6 + (ep-1)*4) #on amplifie l'épaisseur à la l'aide de la transformation 6 + (ep-1)*4, puis on l'applique à la tortue
             t.forward(pas) #on trace le mur haut
@@ -102,16 +102,15 @@ def dessiner_grille(t, grille, n, m, pas=100, speed=5):
         t.left(90) #on tourne à droite
         t.down() #on commence à tracer
 
-    #DESSIN DES MURS HORIZONTAUX
     t.up() #on arrête de tracer
     t.right(90) #on tourne vers le bas
     t.backward((n+1)*pas) #on recule de n+1 pas, pour retourner vers la position de départ en haut à gauche
     t.down() #on commence à tracer
 
     # DESSIN DES MURS VERTICAUX
-    for c in range(1, m+2): #parcours de colonnes
-        for l in range(1, n+1): #parcours de lignes
-            ep = ep_mur(grille, (l, c), 'v', n, m) #
+    for c in range(1, m+2):
+        for l in range(1, n+1):
+            ep = ep_mur(grille, (l, c), 'v', n, m)
             colorer_mur(t, ep)
             t.width(6 + (ep-1)*4)
             t.forward(pas)
@@ -122,97 +121,98 @@ def dessiner_grille(t, grille, n, m, pas=100, speed=5):
         t.right(90)
         t.down()
 
-    ajoute_coor(t, n, m, pas)
-    t.color("white")
-    t.up()
-    t.color("white")
+    ajoute_coor(t, n, m, pas) #on dessine les coordonnées des cellules
+    t.color("white") #on change la couleur vers 'blache'
+    t.up() #on arrête de dessiner
 
 
 
 
-def DesssinerPCC(t, PCC, Gr, pas, color, cout, speed=1,):
-    t.speed(speed)
-    t.up()
-    t.goto(-750, 300)
-    t.seth(0)
-    for i in range(len(PCC) - 1):
-        ep = 0
-        x, y = 0, 0
-        l1, c1 = PCC[i]
-        l2, c2 = PCC[i+1]
-        if l1 == l2 and c1 == c2 + 1:
-            ep = Gr[PCC[i]]['g'][1]
-            x = -750 + (PCC[i][1] - 1) * pas
-            y = 300 - (PCC[i][0] - 1) * pas 
-            t.width(6 + (ep-1)*4)
-            t.seth(-90)
-        elif l1 == l2 + 1 and c1 == c2:
+def DesssinerPCC(t, PCC, Gr, pas, color, cout, speed=1):
+    '''Fonction qui trace le murs percés'''
+    t.speed(speed) #on ajuste la vitesse de la tortue
+    t.up() #on arrête de dessiner
+    t.goto(-750, 300) #on positionne la tortue à (-750, 300)
+    t.seth(0) #on orionte la tortue vers la droite
+    for i in range(len(PCC) - 1): #on parcours les cellules jusqu'à l'avant dérnière
+        ep = 0 #initialisation
+        x, y = 0, 0 #initialisation
+        l1, c1 = PCC[i] #on sauvegarde la ligne et colonne de la cellule courante dans les variables 'l1' et 'c1'
+        l2, c2 = PCC[i+1] #on refait la même chose pour la cellule suivante
+        if l1 == l2 and c1 == c2 + 1: #si la cellule suivante se trouve à gauche de la courante
+            ep = Gr[PCC[i]]['g'][1] #on récupère l'épaisseur du mur gacuhe de la cellule courante
+            x = -750 + (c1 - 1) * pas #on avance de c1-1 pas de la position initiale (-750)
+            y = 300 - (l1 - 1) * pas #on avance (vers le bas) de l1-1 pas de la position initiale (300)
+            t.width(6 + (ep-1)*4) #on ajuste l'épaisseur du traçage
+            t.seth(-90) #on dirige la tortue vers le bas
+        elif l1 == l2 + 1 and c1 == c2: #si la cellule suivante se trouve au dessus de la courante
             ep = Gr[PCC[i]]['h'][1]
-            x = -750 + (PCC[i][1] - 1) * pas 
-            y = 300 - (PCC[i][0] - 1) * pas
+            x = -750 + (c1 - 1) * pas 
+            y = 300 - (l1 - 1) * pas
             t.width(6 + (ep-1)*4)
             t.seth(0)
-        elif l1 == l2 and c1 == c2 - 1:
+        elif l1 == l2 and c1 == c2 - 1: #si la cellule suivante se trouve à la droite de la courante
             ep = Gr[PCC[i]]['d'][1]
-            x = pas -750 + (PCC[i][1] - 1) * pas
-            y = 300 - (PCC[i][0] - 1) * pas
+            x = pas -750 + (c1 - 1) * pas
+            y = 300 - (l1 - 1) * pas
             t.width(6 + (ep-1)*4)
             t.seth(-90)
-        elif l1 == l2 - 1 and c1 == c2:
+        elif l1 == l2 - 1 and c1 == c2: #si la cellule suivante se trouve en dessous de la courante
             ep = Gr[PCC[i]]['b'][1]
-            x = -750 + (PCC[i][1] - 1) * pas
-            y = - pas + 300 - (PCC[i][0] - 1) * pas
+            x = -750 + (c1 - 1) * pas
+            y = - pas + 300 - (l1 - 1) * pas
             t.width(6 + (ep-1)*4)
             t.seth(0)
-        t.goto(x, y)
-        t.down()
-        t.color(color)
-        t.forward(pas/3)
-        t.color("black")
-        t.forward(pas/3)
-        t.color(color)
-        t.forward(pas/3)
-        t.up()
-    Ecrire_chemin_cout(t, PCC, cout, 2)
+        t.goto(x, y) #on positionne la tortue à la position (x, y)
+        t.down() #on commence à dessiner
+        t.color(color) #on modifie la couleur de la tortue
+        t.forward(pas/3) #on avance d'un tier de pas
+        t.color("black") #on change la couleur vers 'noir' pour dessiner le trou dans le mur
+        t.forward(pas/3) #on avance d'un tier de pas
+        t.color(color) #on change la couleur de la tortue
+        t.forward(pas/3) #on avance d'un tier de pas
+        t.up() #on arrête de dessiner
+    Ecrire_chemin_cout(t, PCC, cout, 2) #on dessine le chemin minimisant le cout, ainsi que son cout
 
 
 def Ecrire_chemin_cout(t, PCC, cout, pos_i):
-    if pos_i == 1:
+    '''Fonction qui écrit sur la fenêtre de dessin le chemin minimisant le cout, ainsi que le cout correspondant, pos_i sert à spécifier
+    l'emplacement où on veux écrire'''
+    if pos_i == 1: #emplacement 1
+        t.up() #on ne dessine pas
+        t.color("white") #on met la couleur à 'blanche'
+        t.goto(-710, 375) #on se place à (-710, 375)
+        t.write("Chemin : ", move=True, align='left', font=('Georgia', 15, 'bold')) #on écrit 'chemin : ' sur la fenêtre
+        for cel in PCC: #on parcourt les cellules de la grille
+            text = str(cel) + "  " #on prépare le texte à afficher
+            t.write(text , move=True,align='left',font=('Georgia',15,'bold')) #on écrit la position de la cellule courante
+        t.goto(-710, 355) #on se place à (_710, 355)
+        t.write("Cout : " + str(cout), move=True, align='left', font=('Georgia', 15, 'bold')) #on écrit 'cout : ' sur la fenêtre
+    else: #emplacement 2
         t.up()
         t.color("white")
-        t.goto(-710, 375)
+        t.goto(-710, 335) #on se un peu plus bas
         t.write("Chemin : ", move=True, align='left', font=('Georgia', 15, 'bold'))
         for cel in PCC:
             text = str(cel) + "  "
             t.write(text , move=True,align='left',font=('Georgia',15,'bold'))
         t.up()
-        t.goto(-710, 355)
-        t.write("Cout : " + str(cout), move=True, align='left', font=('Georgia', 15, 'bold'))
-    else:
-        t.up()
-        t.color("white")
-        t.goto(-710, 335)
-        t.write("Chemin : ", move=True, align='left', font=('Georgia', 15, 'bold'))
-        for cel in PCC:
-            text = str(cel) + "  "
-            t.write(text , move=True,align='left',font=('Georgia',15,'bold'))
-        t.up()
-        t.goto(-710, 315)
+        t.goto(-710, 315) #on se place plus bas que l'emplacement 1
         t.write("Cout : " + str(cout), move=True, align='left', font=('Georgia', 15, 'bold'))
 
 def rid_t(t):
-    '''éloigner la tortue de la grille'''
-    t.up()
-    t.goto(-750, 400)
-    t.done()
+    '''Fonction qui éloigne la tortue de la grille déssinée, en la place tout en haut à gauche'''
+    t.up()#on arrête de dessiner
+    t.goto(-750, 400) #on se place en haut à gauche
+    t.done() #on mantient la fenêtre ouverte
 
-#____________partie_tests___________________
+#____________APPLICATION___________________
 # print( ep_mur(grille, (1, 5), 'v', 3, 4) )
 # ajoute_coor(3, 4, 70)
 # n, m = 3, 4
 # Gr = Grille.creer_grille(n, m)
 # dessiner_grille(Gr, n, m, 70)
-#______________end_tests___________________
+#______________FIN_APPLICATION___________________
 
 
 

@@ -1,18 +1,9 @@
 from random import randint as rnd
 
 
-
-
 def generer_ep():
     '''fonction qui retourne une épaisseur généré aléatoirement, entre 1 et 5'''
     return rnd(1, 5)
-
-
-
-
-
-
-
 
 
 def creer_grille(n, m): #n: nombre de lignes  #m: nombre de colonnes
@@ -53,31 +44,3 @@ def creer_grille(n, m): #n: nombre de lignes  #m: nombre de colonnes
         for c in range(1, m+1): #on parcours les colonnes de la grille
             ajouter_cel_à_grille( (l, c) ) #on ajoute la cellule dont la position sur la grille est '(l, c)'
     return grille #on retourne la grille
-
-
-
-
-#_________________parties tests_______________
-
-# print(generer_ep())
-
-# print(creer_grille(3, 4))
-
-# exemple de sortie de l'appel grille(3, 4):
-
-# grille = {
-#     (1, 1) : {'g': [(1, 1), 5], 'h': [(1, 1), 5], 'd': [(1, 2), 3], 'b': [(2, 1), 2]},
-#     (1, 2) : {'g': [(1, 1), 3], 'h': [(1, 2), 2], 'd': [(1, 3), 3], 'b': [(2, 2), 2]},
-#     (1, 3) : {'g': [(1, 2), 3], 'h': [(1, 3), 4], 'd': [(1, 4), 2], 'b': [(2, 3), 4]},
-#     (1, 4) : {'g': [(1, 3), 2], 'h': [(1, 4), 5], 'd': [(1, 4), 4], 'b': [(2, 4), 4]},
-#     (2, 1) : {'g': [(2, 1), 2], 'h': [(1, 1), 2], 'd': [(2, 2), 1], 'b': [(3, 1), 5]},
-#     (2, 2) : {'g': [(2, 1), 1], 'h': [(1, 2), 2], 'd': [(2, 3), 3], 'b': [(3, 2), 1]},
-#     (2, 3) : {'g': [(2, 2), 3], 'h': [(1, 3), 4], 'd': [(2, 4), 3], 'b': [(3, 3), 4]},
-#     (2, 4) : {'g': [(2, 3), 3], 'h': [(1, 4), 4], 'd': [(2, 4), 5], 'b': [(3, 4), 3]},
-#     (3, 1) : {'g': [(3, 1), 4], 'h': [(2, 1), 5], 'd': [(3, 2), 1], 'b': [(3, 1), 3]},
-#     (3, 2) : {'g': [(3, 1), 1], 'h': [(2, 2), 1], 'd': [(3, 3), 3], 'b': [(3, 2), 1]},
-#     (3, 3) : {'g': [(3, 2), 3], 'h': [(2, 3), 4], 'd': [(3, 4), 5], 'b': [(3, 3), 3]},
-#     (3, 4) : {'g': [(3, 3), 5], 'h': [(2, 4), 3], 'd': [(3, 4), 2], 'b': [(3, 4), 4]}
-# }
-
-#_______________fin tests__________________

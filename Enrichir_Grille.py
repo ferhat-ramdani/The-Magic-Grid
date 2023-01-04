@@ -3,14 +3,6 @@ import PlusCoursChemin as pcc
 import DessinerGrille
 
 
-
-
-
-
-
-
-
-
 def enrichir(grille, PCC):
     for i in range(len(PCC) - 1):
         l, c = PCC[i]
@@ -28,7 +20,6 @@ def enrichir(grille, PCC):
             grille[PCC[i]]['b'].append(True)
             grille[PCC[i+1]]['h'].append(True)
     
-
 
 def general(mur, pas, cel):
     angle, pos = 0, ''
@@ -54,6 +45,7 @@ def general(mur, pas, cel):
         x = -750 + (cel[1] - 1) * pas
         y = - pas + 300 - (cel[0] - 1) * pas
     return pos, angle, x, y
+
 
 #ceci va servir pour repondre à la question b) de la partie 3
 def adapter_dessin(t, grille,  pcChemin, cout, color = "white", pas = 100):
