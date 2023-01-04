@@ -108,7 +108,7 @@ def dessiner_grille(t, grille, n, m, pas=100, speed=5):
     t.backward((n+1)*pas) #on recule de n+1 pas, pour retourner vers la position de départ en haut à gauche
     t.down() #on commence à tracer
 
-
+    # DESSIN DES MURS VERTICAUX
     for c in range(1, m+2): #parcours de colonnes
         for l in range(1, n+1): #parcours de lignes
             ep = ep_mur(grille, (l, c), 'v', n, m) #
