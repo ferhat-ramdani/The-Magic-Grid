@@ -13,6 +13,6 @@ Question 1d : On garde l'algo de Dijkstra ou on le remplace par celui de Bellman
 **réponse:** pour la réponse à la question d de la partie 3, je pense qu'on peut mettre Bellman-Ford, en terme modifications sur le rapport, on changera presque rien. Je m'occupe de la modification. <br>
 
 # Mise à jour:
-j'ai terminé de commenter la classe DessinerGrille
-je vais modifier les noms des classes et fonctions une fois que tu aurai fini de commenter les classes
-j'ai ajouté la classe **APPLICATION**, c'est là que je met les tests de toutes les fonctions de toutes les classes, je l'ai pas encore terminé
+j'ai terminé de commenter la classe DessinerGrille <br>
+je vais modifier les noms des classes et fonctions une fois que tu aurai fini de commenter les classes <br>
+j'ai ajouté la classe **APPLICATION**, c'est là que je met les tests de toutes les fonctions de toutes les classes, je l'ai pas encore terminé <br>
