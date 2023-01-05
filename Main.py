@@ -18,8 +18,5 @@ DG.dessiner_grille(t, maGrille, n, m, pas, 11)
 # pcc_non_opt, cout_non_opt = b.efficace_pas_opti(maGrille, n, m)
 # DG.DesssinerPCC(t, pcc_non_opt, maGrille, pas, "gray", cout_non_opt, 11)
 # DG.rid_t(t)
-#Petite Modif 
-"""Tu retrouveras ici des tests que j'ai essayé de faire mais qui ne fonctionne pas le problème 
-vien peut etre de l'importation des classe bBonus ou de Enrichir_Grille ?"""
 t.goto(-750 + pas, 300 - pas)
 t.done()

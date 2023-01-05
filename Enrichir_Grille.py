@@ -58,17 +58,13 @@ def adapter_dessin(t, grille,  pcChemin, cout, color = "white", pas = 100):
     for cel in grille:
         for mur in grille[cel]:
             if len(grille[cel][mur]) == 3:
-
-                # print("general : ", general(mur, pas, cel))
                 pos, angle, x, y = general(mur, pas, cel)
-
                 cel_rep = grille[cel][mur][0]
                 del(grille[cel_rep][pos][2])
                 ep = grille[cel][mur][1]
 
                 t.width(6 + (ep-1)*4)
                 t.seth(angle)
-
                 t.goto(x, y)
                 t.down()
                 t.forward(pas/3)
