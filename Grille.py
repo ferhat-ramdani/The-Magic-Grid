@@ -15,7 +15,7 @@ def creer_grille(n, m): #n: nombre de lignes  #m: nombre de colonnes
         cel = {} #on ititialise la cellue 'cel' à ajouter à 'grille'
 
         if pos[1] == 1: #si on est en première colonne
-            cel['g'] = [ pos, generer_ep() ] #on ajoute le mur gauche à 'cel', ayant la forme: [position, épaisseur]
+            cel['g'] = [ pos, generer_ep() ] #on génère une épaisseur pour le mur gauche puis on l'ajoute à 'cel'
         else: #s'il ne s'agit pas de la première colonne
             pos_g = (pos[0], pos[1] - 1) #'pos_g' est la position de la cellule à gauche de 'pos'
             cel['g'] = [ pos_g, grille[pos_g]['d'][1] ] #le mur gauche aura pour position 'cel_g', et pour ép. celle du mur droit de 'cel_g'
@@ -27,12 +27,12 @@ def creer_grille(n, m): #n: nombre de lignes  #m: nombre de colonnes
             cel['h'] = [ pos_h, grille[pos_h]['b'][1] ] # le mur du haut aura pour position 'cel_b', et pour ép. celle du mur du bas de 'cel_b'
 
         if pos[1] == m: #si on est en dérnière colonne
-            cel['d'] = [ pos, generer_ep() ] #on ajoute le mur droit à 'cel'
+            cel['d'] = [ pos, generer_ep() ] #on génère une épaisseur pour le mur droit  puis on l'ajoute à 'cel'
         else:
             cel['d'] = [ (pos[0], pos[1] + 1), generer_ep() ] #le mur droit aura la position de la cellule à droite, et une épaisseur générée
 
         if pos[0] == n: #si on est en dérnière ligne
-            cel['b'] = [ pos, generer_ep() ] #on ajoute le mur du bas à 'cel'
+            cel['b'] = [ pos, generer_ep() ] #on génère une épaisseur pour le mur du bas puis on l'ajoute à 'cel'
         else:
             cel['b'] = [ (pos[0] + 1, pos[1]), generer_ep() ] #le mur du bas aura la position de la cellule en bas, et une épaisseur générée
 

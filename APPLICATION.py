@@ -63,7 +63,7 @@ import turtle as t
 
 #______________APPLICATOIN_Enrichir_Grille______________
 
-n, m = 3, 4
-grille = Grille.creer_grille()
-pcc = PlusCoursChemin.plus_court_chemin(grille, n, m)[0]
-Enrichir_Grille.enrichir(grille, pcc) #test de la fonction 'enrichir()'
+# n, m = 3, 4
+# grille = Grille.creer_grille()
+# pcc = PlusCoursChemin.plus_court_chemin(grille, n, m)[0]
+# Enrichir_Grille.enrichir(grille, pcc) #test de la fonction 'enrichir()'

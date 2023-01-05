@@ -2,8 +2,8 @@ import Grille
 
 #pos commence de (1, 1) et correspand à la position de la tortue
 def ep_mur(grille, pos, dir, n, m): #n: nombre de lignes  #m: nombre de colonnes
-    '''fonction qui prend en paramètre une grille, la position de la tortue et la direction : horizontale ou verticale, 
-    et retourne l'épaisseur du mur à dessiner'''
+    '''fonction qui prend en paramètre une grille, la position de la tortue et la 
+    direction : horizontale ou verticale, et retourne l'épaisseur du mur à dessiner'''
     if dir == 'h': #si la direction est horizontale
         if pos[0] == n+1: #si la tortue se trouve à la ligne n+1
             return grille[(n, pos[1])]['b'][1] #on retourne l'épaisseur du mur du bas de la cellule de la dérnière ligne et même colonne que la tortue
@@ -22,7 +22,8 @@ def ep_mur(grille, pos, dir, n, m): #n: nombre de lignes  #m: nombre de colonnes
 
 
 def colorer_mur(t, ep):
-    '''Fonction prenant en paramètre une instance du module 'turtle', une épaisseur et défini une ceraine couleur pour t'''
+    '''Fonction prenant en paramètre une instance du module 'turtle', 
+    une épaisseur et défini une ceraine couleur pour t'''
     #les choix des couleurs sont pris arbitrairement
     if ep == 1: #si l'épaisseur est 1
         t.color("red") #on met la couleur de la tortue au rouge
@@ -47,7 +48,8 @@ def colorer_mur(t, ep):
 
     
 def ajoute_coor(t, n, m, pas=100):
-    '''Fonction qui dessine les coordonnées sous la forme (ligne, colonnes) au centre de chaque cellule de la grille'''
+    '''Fonction qui dessine les coordonnées sous la forme (ligne, colonnes) au centre 
+    de chaque cellule de la grille'''
     t.color("red") #on change la couleur vers le rouge
     t.up() #on empeche la tortue de dessiner dérière elle
     t.goto(-750 + pas/2, 300 - pas/2) #on met la tortue à la position initiale (-750, 300), puis on la décale de 'pas/2' pour la centrer
@@ -80,7 +82,8 @@ def ajoute_coor(t, n, m, pas=100):
 
 
 def dessiner_grille(t, grille, n, m, pas=100, speed=5):
-    '''Fonction qui dessine la grille, les paramètres 'pas' et 'speed' sont optionnelles, ils décident des dimentions de la cellule et de la vitesse de la tortue '''
+    '''Fonction qui dessine la grille, les paramètres 'pas' et 'speed' sont optionnelles, 
+    ils décident des dimentions de la cellule et de la vitesse de la tortue '''
     t.speed(speed) #on change la vitesse de la tortue
     t.shape("turtle") #on change la forme de la tortue
     t.bgcolor("black") #on change le font de la fenêtre sur laquelle déssine la tortue vers le noir
@@ -176,8 +179,9 @@ def DesssinerPCC(t, PCC, Gr, pas, color, cout, speed=1):
 
 
 def Ecrire_chemin_cout(t, PCC, cout, pos_i):
-    '''Fonction qui écrit sur la fenêtre de dessin le chemin minimisant le cout, ainsi que le cout correspondant, pos_i sert à spécifier
-    l'emplacement où on veux écrire'''
+    '''Fonction qui écrit sur la fenêtre de dessin le chemin minimisant le cout, 
+    ainsi que le cout correspondant, pos_i sert à spécifier l'emplacement où 
+    on veux écrire'''
     if pos_i == 1: #emplacement 1
         t.up() #on ne dessine pas
         t.color("white") #on met la couleur à 'blanche'
@@ -201,8 +205,9 @@ def Ecrire_chemin_cout(t, PCC, cout, pos_i):
         t.write("Cout : " + str(cout), move=True, align='left', font=('Georgia', 15, 'bold'))
 
 def rid_t(t):
-    '''Fonction qui éloigne la tortue de la grille déssinée, en la place tout en haut à gauche'''
-    t.up()#on arrête de dessiner
+    '''Fonction qui éloigne la tortue de la grille déssinée, en la place 
+    tout en haut à gauche'''
+    t.up() #on arrête de dessiner
     t.goto(-750, 400) #on se place en haut à gauche
     t.done() #on mantient la fenêtre ouverte
 
