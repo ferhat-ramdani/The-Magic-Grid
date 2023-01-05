@@ -20,3 +20,4 @@ je vais modifier les noms des classes et fonctions une fois que tu aurai fini de
 j'ai ajouté la classe **APPLICATION**, c'est là que je met les tests de toutes les fonctions de toutes les classes, je l'ai pas encore terminé <br>
 j'ai terminé de commenter la classe Bonus <br>
 j'ai terminé de commenter la classe PlusCoursChemin <br>
+j'ai modifié la partie 3 qst d. du rapport, j'ai fait des petites modifications sur la structure du rapport <br>
