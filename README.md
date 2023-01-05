@@ -11,8 +11,11 @@ Que le chemin est calculé de manière Rapide contrairement a Dijkstra ou Bellma
 **réponse:** Oui <br>
 Question 1d : On garde l'algo de Dijkstra ou on le remplace par celui de Bellman Ford sachant que le cout est identique à chaques fois ? <br>
 **réponse:** pour la réponse à la question d de la partie 3, je pense qu'on peut mettre Bellman-Ford, en terme modifications sur le rapport, on changera presque rien. Je m'occupe de la modification. <br>
+ **Vue** 
 
 # Mise à jour:
 j'ai terminé de commenter la classe DessinerGrille <br>
 je vais modifier les noms des classes et fonctions une fois que tu aurai fini de commenter les classes <br>
 j'ai ajouté la classe **APPLICATION**, c'est là que je met les tests de toutes les fonctions de toutes les classes, je l'ai pas encore terminé <br>
+j'ai terminé de commenter la classe Bonus <br>
+j'ai terminé de commenter la classe PlusCoursChemin <br>
