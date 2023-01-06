@@ -69,16 +69,6 @@ def ajoute_coor(t, n, m, pas=100):
 
 
 
-
-
-
-
-
-
-
-
-
-
 def dessiner_grille(t, grille, n, m, pas=100, speed=11):
     '''Fonction qui dessine la grille, les paramètres 'pas' et 'speed' sont optionnelles, 
     ils décident des dimentions de la cellule et de la vitesse de la tortue '''

@@ -58,16 +58,30 @@ import turtle as t
 # n, m = 3, 4
 # grille = Grille.creer_grille(n, m)
 # print('Dijkstra : \n')
-# print(PlusCoursChemin.dijkstra(grille, (1, 1))) #test de la fonction 'dijkstra()'
+# D, P = PlusCoursChemin.dijkstra(grille, (1, 1)) #test de la fonction 'dijkstra()'
+# print("Distances D : \n")
+# for cel in D:
+#     print(cel, ":", D[cel])
+# print("\nPrédecesseurs P : \n")
+# for cel in P:
+#     print(cel, ":", P[cel])
 # print('\nBellman-Ford : \n')
-# print(PlusCoursChemin.bellman_ford(grille, (1, 1))) #test de la fonction 'bellman_ford()'
+# D, P = PlusCoursChemin.bellman_ford(grille, (1, 1)) #test de la fonction 'bellman_ford()'
+# print("Distances D : \n")
+# for cel in D:
+#     print(cel, ":", D[cel])
+# print("\nPrédecesseurs P : \n")
+# for cel in P:
+#     print(cel, ":", P[cel])
 # print('\nChemin avec cout minimal : \n')
-# print(PlusCoursChemin.plus_court_chemin(grille, n, m)) #test de la fonction 'plus_cours_chemin'
+# PCC, cout = PlusCoursChemin.plus_court_chemin(grille, n, m) #test de la fonction 'plus_cours_chemin'
+# print("PCC : ", PCC, "\n")
+# print("cout : ", cout)
 
 #______________CLASSE_Enrichir_Grille______________
 
 # n, m = 3, 4
-# grille = Grille.creer_grille()
+# grille = Grille.creer_grille(n, m)
 # pcc, cout = PlusCoursChemin.plus_court_chemin(grille, n, m)
 # Enrichir_Grille.enrichir(grille, pcc) #test de la fonction 'enrichir()'
 # DessinerGrille.dessiner_grille(t, grille, n, m)
@@ -81,10 +95,10 @@ import turtle as t
 # grille = Grille.creer_grille(n, m)
 # DessinerGrille.dessiner_grille(t, grille, n, m, pas)
 # pcc_bonus, cout_bonus = Bonus.efficace_pas_opti(grille, n, m)
-# DessinerGrille.DesssinerPCC(t, pcc_bonus, grille, pas, "bonus", "white", cout_bonus, 11, 1) #test de la fonction 'DessinerPCC' de la classe 'DessinerGrille'
+# DessinerGrille.DesssinerPCC(t, pcc_bonus, grille, pas, "white", cout_bonus, "bonus", 11, 1) #test de la fonction 'DessinerPCC' de la classe 'DessinerGrille'
 # #comparaison avec l'algorithme de dijkstra:
 # pcc_dij, cout_dij = PlusCoursChemin.plus_court_chemin(grille, n, m)
-# DessinerGrille.DesssinerPCC(t, pcc_dij, grille, pas, "dij", "gray", cout_dij, 11, 2)
+# DessinerGrille.DesssinerPCC(t, pcc_dij, grille, pas, "gray", cout_dij, "dij", 11, 2)
 # t.done()
 
 #_____________CLASSE_Main______________

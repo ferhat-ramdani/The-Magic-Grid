@@ -29,7 +29,7 @@ def bellman_ford(G, s):
     d={k: float('inf') for k in G} #distances initiales
     P={} #on initialise la liste des prédécesseurs
     d[s]=0 #sommet de départ
-    fini=False #bouléan utilisé pour terminer la boucle while
+    fini=False #bouléen utilisé pour terminer la boucle while
     while not fini: 
         fini=True #on met fini à True, on le remet à False uniquement si on met à jour les distances
         for cel in G: #parcours des cellules de la grille
