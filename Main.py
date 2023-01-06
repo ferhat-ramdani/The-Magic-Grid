@@ -6,7 +6,7 @@ import Enrichir_Grille
 import Bonus
 
 n, m = 4, 9
-pas = 150
+pas = 130
 maGrille = Grille.creer_grille(n, m)
 DessinerGrille.dessiner_grille(t, maGrille, n, m, pas, 11)
 #si 

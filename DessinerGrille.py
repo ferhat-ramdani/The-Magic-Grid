@@ -50,7 +50,7 @@ def ajoute_coor(t, n, m, pas=100):
     de chaque cellule de la grille'''
     t.color("red") #on change la couleur vers le rouge
     t.up() #on empeche la tortue de dessiner dérière elle
-    t.goto(-750 + pas/2, 300 - pas/2) #on met la tortue à la position initiale (-750, 300), puis on la décale de 'pas/2' pour la centrer
+    t.goto(-700 + pas/2, 300 - pas/2) #on met la tortue à la position initiale (-700, 300), puis on la décale de 'pas/2' pour la centrer
     t.seth(0) #on dirige la tortue vers la gauche
     for l in range(1, n+1): #on parcours les lignes de la grille
         for c in range(1, m+1): #on parcours les colonnes de la grille
@@ -86,7 +86,7 @@ def dessiner_grille(t, grille, n, m, pas=100, speed=11):
     t.shape("turtle") #on change la forme de la tortue
     t.bgcolor("black") #on change le font de la fenêtre sur laquelle déssine la tortue vers le noir
     t.up() #on empêche la tortue de dessiner dérière elle
-    t.goto(-750, 300) #on positionne la tortue à (-750, 300)
+    t.goto(-700, 300) #on positionne la tortue à (-700, 300)
     t.down() #la tortue désormais trace le chemin dérière elle
     wn = t.Screen()
     wn.title("GRILLE MAGIQUE")
@@ -136,7 +136,7 @@ def DesssinerPCC(t, PCC, Gr, pas, color, cout, algo, speed=11, emplacement = 1):
     '''Fonction qui trace le murs percés'''
     t.speed(speed) #on ajuste la vitesse de la tortue
     t.up() #on arrête de dessiner
-    t.goto(-750, 300) #on positionne la tortue à (-750, 300)
+    t.goto(-700, 300) #on positionne la tortue à (-700, 300)
     t.seth(0) #on oriente la tortue vers la droite
     for i in range(len(PCC) - 1): #on parcours les cellules jusqu'à l'avant dérnière
         ep = 0 #initialisation
@@ -145,25 +145,25 @@ def DesssinerPCC(t, PCC, Gr, pas, color, cout, algo, speed=11, emplacement = 1):
         l2, c2 = PCC[i+1] #on refait la même chose pour la cellule suivante
         if l1 == l2 and c1 == c2 + 1: #si la cellule suivante se trouve à gauche de la courante
             ep = Gr[PCC[i]]['g'][1] #on récupère l'épaisseur du mur gacuhe de la cellule courante
-            x = -750 + (c1 - 1) * pas #on avance de c1-1 pas de la position initiale (-750)
+            x = -700 + (c1 - 1) * pas #on avance de c1-1 pas de la position initiale (-700)
             y = 300 - (l1 - 1) * pas #on avance (vers le bas) de l1-1 pas de la position initiale (300)
             t.width(6 + (ep-1)*4) #on ajuste l'épaisseur du traçage
             t.seth(-90) #on dirige la tortue vers le bas
         elif l1 == l2 + 1 and c1 == c2: #si la cellule suivante se trouve au dessus de la courante
             ep = Gr[PCC[i]]['h'][1]
-            x = -750 + (c1 - 1) * pas 
+            x = -700 + (c1 - 1) * pas 
             y = 300 - (l1 - 1) * pas
             t.width(6 + (ep-1)*4)
             t.seth(0)
         elif l1 == l2 and c1 == c2 - 1: #si la cellule suivante se trouve à la droite de la courante
             ep = Gr[PCC[i]]['d'][1]
-            x = pas -750 + (c1 - 1) * pas
+            x = pas -700 + (c1 - 1) * pas
             y = 300 - (l1 - 1) * pas
             t.width(6 + (ep-1)*4)
             t.seth(-90)
         elif l1 == l2 - 1 and c1 == c2: #si la cellule suivante se trouve en dessous de la courante
             ep = Gr[PCC[i]]['b'][1]
-            x = -750 + (c1 - 1) * pas
+            x = -700 + (c1 - 1) * pas
             y = - pas + 300 - (l1 - 1) * pas
             t.width(6 + (ep-1)*4)
             t.seth(0)
