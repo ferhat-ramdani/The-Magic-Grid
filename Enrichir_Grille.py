@@ -48,7 +48,7 @@ def general(mur, pas, cel):
     return pos, angle, x, y 
     # Retourne la position du mur de la cellule voisine , l'angle pour dessiner horizontalement ou verticaleent et la position de notre turle (x,y)
 
-def adapter_dessin(t, grille,  pcChemin, cout, color = "white", pas = 100, emplacement = 2):
+def adapter_dessin(t, grille,  pcChemin, cout, algo, color = "white", pas = 100, emplacement = 2):
     t.bgcolor("black")  #on change le font de la fenêtre sur laquelle déssine la tortue vers le noir
     t.speed(11) #on change la vitesse de la tortue
     t.color(color) #On change la couleur de dessin par la valeur blanche par défaut ou une autre valeur
@@ -75,4 +75,4 @@ def adapter_dessin(t, grille,  pcChemin, cout, color = "white", pas = 100, empla
                 t.forward(pas/3) #on avance d'un tier de pas
                 t.up() #on arrête de dessiner
 
-    DessinerGrille.Ecrire_chemin_cout(t, pcChemin, cout, emplacement) #on dessine le chemin minimisant le cout, ainsi que son cout
+    DessinerGrille.Ecrire_chemin_cout(t, pcChemin, cout, emplacement, algo) #on dessine le chemin minimisant le cout, ainsi que son cout

@@ -129,7 +129,7 @@ def dessiner_grille(t, grille, n, m, pas=100, speed=11):
 
 
 
-def DesssinerPCC(t, PCC, Gr, pas, color, cout, speed=11, emplacement = 1):
+def DesssinerPCC(t, PCC, Gr, pas, color, cout, algo, speed=11, emplacement = 1):
     '''Fonction qui trace le murs percés'''
     t.speed(speed) #on ajuste la vitesse de la tortue
     t.up() #on arrête de dessiner
@@ -173,11 +173,11 @@ def DesssinerPCC(t, PCC, Gr, pas, color, cout, speed=11, emplacement = 1):
         t.color(color) #on change la couleur de la tortue
         t.forward(pas/3) #on avance d'un tier de pas
         t.up() #on arrête de dessiner
-    Ecrire_chemin_cout(t, PCC, cout, emplacement) #on dessine le chemin minimisant le cout, ainsi que son cout
+    Ecrire_chemin_cout(t, PCC, cout, emplacement, algo) #on dessine le chemin minimisant le cout, ainsi que son cout
     rid_t(t)
 
 
-def Ecrire_chemin_cout(t, PCC, cout, pos_i):
+def Ecrire_chemin_cout(t, PCC, cout, pos_i, algo):
     '''Fonction qui écrit sur la fenêtre de dessin le chemin minimisant le cout, 
     ainsi que le cout correspondant, pos_i sert à spécifier l'emplacement où 
     on veux écrire'''
@@ -185,7 +185,7 @@ def Ecrire_chemin_cout(t, PCC, cout, pos_i):
         t.up() #on ne dessine pas
         t.color("white") #on met la couleur à 'blanche'
         t.goto(-710, 375) #on se place à (-710, 375)
-        t.write("Chemin : ", move=True, align='left', font=('Georgia', 15, 'bold')) #on écrit 'chemin : ' sur la fenêtre
+        t.write("Chemin (" + algo + ") : ", move=True, align='left', font=('Georgia', 15, 'bold')) #on écrit 'chemin : ' sur la fenêtre
         for cel in PCC: #on parcourt les cellules de la grille
             text = str(cel) + "  " #on prépare le texte à afficher
             t.write(text , move=True,align='left',font=('Georgia',15,'bold')) #on écrit la position de la cellule courante
@@ -195,7 +195,7 @@ def Ecrire_chemin_cout(t, PCC, cout, pos_i):
         t.up()
         t.color("white")
         t.goto(-710, 335) #on se un peu plus bas
-        t.write("Chemin : ", move=True, align='left', font=('Georgia', 15, 'bold'))
+        t.write("Chemin (" + algo + ") : ", move=True, align='left', font=('Georgia', 15, 'bold'))
         for cel in PCC:
             text = str(cel) + "  "
             t.write(text , move=True,align='left',font=('Georgia',15,'bold'))
