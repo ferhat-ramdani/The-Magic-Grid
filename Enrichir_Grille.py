@@ -28,23 +28,23 @@ def general(mur, pas, cel):
     if mur == 'g': # Si mur est gauche
         pos = 'd' # Mur Commun sera le mur droit de la cellule voisine
         angle = -90 # angle pour positionner l'instance afin de dessiner le mur vertical -90 pour qu'elle se positionne verticalement
-        x = -700 + (cel[1] - 1) * pas #Position de la turtle des abcisses x décalés de l'origine + (nombre de colonne *pas) 
-        y = 300 - (cel[0] - 1) * pas #Position de la turtle des ordonnées y décalés de l'origine + (nombre de ligne *pas)
+        x = -600 + (cel[1] - 1) * pas #Position de la turtle des abcisses x décalés de l'origine + (nombre de colonne *pas) 
+        y = 250 - (cel[0] - 1) * pas #Position de la turtle des ordonnées y décalés de l'origine + (nombre de ligne *pas)
     elif mur == 'd': # Si mur est droit
         pos ='g' # Mur Commun sera le mur gauche de la cellule voisine
         angle = -90 # angle pour positionner l'instance afin de dessiner le mur vertical -90 pour qu'elle se positionne verticalement
-        x = pas -700 + (cel[1] - 1) * pas #Position de la turtle au niveau des abcisses x décalés de l'origine + (nombre de colonne *pas) 
-        y = 300 - (cel[0] - 1) * pas  #Position de la turtle au niveau des ordonnées y décalés de l'origine + (nombre de ligne pas)
+        x = pas -600 + (cel[1] - 1) * pas #Position de la turtle au niveau des abcisses x décalés de l'origine + (nombre de colonne *pas) 
+        y = 250 - (cel[0] - 1) * pas  #Position de la turtle au niveau des ordonnées y décalés de l'origine + (nombre de ligne pas)
     elif mur == 'h': # Si mur est haut
         pos ='b'  # Mur Commun sera le mur bas de la cellule voisine
         angle = 0 # angle pour positionner l'instance afin de dessiner le mur horizontal 0 pour qu'elle se positionne horizontalement
-        x = -700 + (cel[1] - 1) * pas #Position de la turtle au niveau des abcisses x décalés de l'origine + (nombre de colonne *pas) 
-        y = 300 - (cel[0] - 1) * pas #Position de la turtle au niveau des ordonnées y décalés de l'origine + (nombre de ligne pas)
+        x = -600 + (cel[1] - 1) * pas #Position de la turtle au niveau des abcisses x décalés de l'origine + (nombre de colonne *pas) 
+        y = 250 - (cel[0] - 1) * pas #Position de la turtle au niveau des ordonnées y décalés de l'origine + (nombre de ligne pas)
     else :
         pos ='h' # Mur Commun sera le mur haut de la cellule voisine
         angle = 0 # angle pour positionner l'instance afin de dessiner le mur horizontal 0 pour qu'elle se positionne horizontalement
-        x = -700 + (cel[1] - 1) * pas #Position de la turtle au niveau des abcisses x décalés de l'origine + (nombre de colonne *pas) 
-        y = - pas + 300 - (cel[0] - 1) * pas #Position de la turtle au niveau des ordonnées y décalés de l'origine + (nombre de ligne pas)
+        x = -600 + (cel[1] - 1) * pas #Position de la turtle au niveau des abcisses x décalés de l'origine + (nombre de colonne *pas) 
+        y = - pas + 250 - (cel[0] - 1) * pas #Position de la turtle au niveau des ordonnées y décalés de l'origine + (nombre de ligne pas)
     return pos, angle, x, y 
     # Retourne la position du mur de la cellule voisine , l'angle pour dessiner horizontalement ou verticaleent et la position de notre turle (x,y)
 
@@ -53,7 +53,7 @@ def adapter_dessin(t, grille,  pcChemin, cout, algo, color = "white", pas = 100,
     t.speed(11) #on change la vitesse de la tortue
     t.color(color) #On change la couleur de dessin par la valeur blanche par défaut ou une autre valeur
     t.up()
-    t.goto(-700, 300) #on positionne la tortue à (-700, 300) en haut à gauche afin de dessiner sur la grille
+    t.goto(-600, 250) #on positionne la tortue à (-600, 250) en haut à gauche afin de dessiner sur la grille
     t.seth(0) # On change l'angle à O 
     for cel in grille: # Récuperation de la position de chaques cellules dans la grille
         for mur in grille[cel]: # Pour chaques murs de cette cellule recuperer 
