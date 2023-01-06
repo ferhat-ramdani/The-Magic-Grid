@@ -26,4 +26,4 @@ j'ai terminé la classe **APPLICATION** <br>
 j'ai modifié la classe Main, ne plus faire des modification sur cette classe SVP <br>
 J'ai termine d'ajouter les commentaires sur la classe Enrichir_Grille <br>
 Nous avons commentés toutes la classes du Projet <br>
-Ferhat : j'ai modifié Ecrire_chemin_cout
+Ferhat : j'ai modifié Ecrire_chemin_cout <br>
