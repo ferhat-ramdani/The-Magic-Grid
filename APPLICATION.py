@@ -6,7 +6,7 @@ import Bonus
 import turtle as t
 
 
-#La suite est une suite de tests réservée à chaque classe de notre projet
+#La suite est une suite de tests réservés à chaque classe de notre projet
 
 
 #______________CLASSE_Grille_______________
