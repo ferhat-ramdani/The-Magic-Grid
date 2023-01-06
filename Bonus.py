@@ -1,10 +1,3 @@
-import Grille
-import DessinerGrille as DG
-import PlusCoursChemin as PCC
-
-
-
-
 def efficace_pas_opti(grille, n, m): #Fonction utilisant Strategie Gloutonne prenant le mur localement optimal
     Chemin_dir = [(1, 1)] #Tableau correspondant au chemin commence de (1,1) correspondant à la première cellule et va jusqu'à la derniere cellule (n,m)
     coût_dir = 0 # Cout du chemin dans le sens direct qui sera incrémenté à chaque epaisseur du mur de rencontré de la cellule (1,1) jusqu'a la cellule (n,m)
@@ -56,22 +49,3 @@ def efficace_pas_opti(grille, n, m): #Fonction utilisant Strategie Gloutonne pre
         return Chemin_dir, coût_dir # Si le cout direct est moindre que le cout indirect on retourne le chemin direct et le cout direct
     else:
         return Chemin_indir, coût_indir # Sinon on retourne le chemin indirect et le cout indirect
-
-
-#______________________APPLICAITON_____________________
-# n, m = 7, 13
-# maGrille = Grille.creer_grille(n, m)
-# DG.dessiner_grille(t, maGrille, n, m, 70, 11)
-
-# pcc_bel, cout = PCC.plus_court_chemin(maGrille, n, m, 'bel')
-# pcc_djiks, cout2 = PCC.plus_court_chemin(maGrille, n, m, 'dij')
-# DG.DesssinerPCC(t, pcc_bel, maGrille, 70, "white", cout, 11)
-# DG.DesssinerPCC(t, pcc_djiks, maGrille, 70, "white", cout2, 11)
-
-
-# pcc_non_opt, cout_non_opt = efficace_pas_opti(maGrille, n, m)
-# print(cout_non_opt)
-
-# DG.DesssinerPCC(t, pcc_non_opt, maGrille, 70, "gray", cout_non_opt, 11)
-
-# DG.rid_t(t)

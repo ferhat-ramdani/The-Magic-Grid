@@ -1,7 +1,4 @@
-import Grille as g
-import PlusCoursChemin as pcc
 import DessinerGrille
-
 
 def enrichir(grille, PCC):
     for i in range(len(PCC) - 1):
@@ -47,8 +44,7 @@ def general(mur, pas, cel):
     return pos, angle, x, y
 
 
-#ceci va servir pour repondre à la question b) de la partie 3
-def adapter_dessin(t, grille,  pcChemin, cout, color = "white", pas = 100):
+def adapter_dessin(t, grille,  pcChemin, cout, color = "white", pas = 100, emplacement = 2):
     t.bgcolor("black")
     t.speed(11)
     t.color(color)
@@ -74,15 +70,4 @@ def adapter_dessin(t, grille,  pcChemin, cout, color = "white", pas = 100):
                 t.forward(pas/3)
                 t.up()
 
-    DessinerGrille.Ecrire_chemin_cout(t, pcChemin, cout, 1)
-
-
-
-#__________APPLICATION______________
-# n, m = 3, 4
-# gpt = g.creer_grille(n, m)
-# p_c_c = pcc.plus_court_chemin(gpt, n, m)[0]
-# enrichir(gpt, p_c_c)
-
-# DessinerGrille.dessiner_grille(t, gpt, n, m)
-# adapter_dessin(t, gpt)
+    DessinerGrille.Ecrire_chemin_cout(t, pcChemin, cout, emplacement)

@@ -21,3 +21,6 @@ j'ai ajouté la classe **APPLICATION**, c'est là que je met les tests de toutes
 j'ai terminé de commenter la classe Bonus <br>
 j'ai terminé de commenter la classe PlusCoursChemin <br>
 j'ai modifié la partie 3 qst d. du rapport, j'ai fait des petites modifications sur la structure du rapport <br>
+j'ai enlevés les tests dans les classes, et toutes les importations inutiles <br>
+j'ai terminé la classe **APPLICATION** <br>
+j'ai modifié la classe Main, ne plus faire des modification sur cette classe SVP <br>

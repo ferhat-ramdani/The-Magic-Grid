@@ -1,5 +1,3 @@
-import Grille
-
 #pos commence de (1, 1) et correspand à la position de la tortue
 def ep_mur(grille, pos, dir, n, m): #n: nombre de lignes  #m: nombre de colonnes
     '''fonction qui prend en paramètre une grille, la position de la tortue et la 
@@ -26,13 +24,13 @@ def colorer_mur(t, ep):
     une épaisseur et défini une ceraine couleur pour t'''
     #les choix des couleurs sont pris arbitrairement
     if ep == 1: #si l'épaisseur est 1
-        t.color("red") #on met la couleur de la tortue au rouge
-    elif ep == 2:  #si l'épaisseur est 2
-        t.color("lime") #on met la couleur de la tortue au vert citron
-    elif ep == 3:  #si l'épaisseur est 3
-        t.color("skyblue") #on met la couleur de la tortue au blue ciel
-    elif ep == 4:  #si l'épaisseur est 4
         t.color("blue") #on met la couleur de la tortue au blue
+    elif ep == 2:  #si l'épaisseur est 2
+        t.color("skyblue") #on met la couleur de la tortue au blue ciel
+    elif ep == 3:  #si l'épaisseur est 3
+        t.color("lime") #on met la couleur de la tortue au vert
+    elif ep == 4:  #si l'épaisseur est 4
+        t.color("red") #on met la couleur de la tortue au rouge
     elif ep == 5:  #si l'épaisseur est 5
         t.color("yellow") #on met la couleur de la tortue au jaune
 
@@ -81,7 +79,7 @@ def ajoute_coor(t, n, m, pas=100):
 
 
 
-def dessiner_grille(t, grille, n, m, pas=100, speed=5):
+def dessiner_grille(t, grille, n, m, pas=100, speed=11):
     '''Fonction qui dessine la grille, les paramètres 'pas' et 'speed' sont optionnelles, 
     ils décident des dimentions de la cellule et de la vitesse de la tortue '''
     t.speed(speed) #on change la vitesse de la tortue
@@ -131,7 +129,7 @@ def dessiner_grille(t, grille, n, m, pas=100, speed=5):
 
 
 
-def DesssinerPCC(t, PCC, Gr, pas, color, cout, speed=1):
+def DesssinerPCC(t, PCC, Gr, pas, color, cout, speed=11, emplacement = 1):
     '''Fonction qui trace le murs percés'''
     t.speed(speed) #on ajuste la vitesse de la tortue
     t.up() #on arrête de dessiner
@@ -175,7 +173,8 @@ def DesssinerPCC(t, PCC, Gr, pas, color, cout, speed=1):
         t.color(color) #on change la couleur de la tortue
         t.forward(pas/3) #on avance d'un tier de pas
         t.up() #on arrête de dessiner
-    Ecrire_chemin_cout(t, PCC, cout, 2) #on dessine le chemin minimisant le cout, ainsi que son cout
+    Ecrire_chemin_cout(t, PCC, cout, emplacement) #on dessine le chemin minimisant le cout, ainsi que son cout
+    rid_t(t)
 
 
 def Ecrire_chemin_cout(t, PCC, cout, pos_i):
@@ -203,22 +202,10 @@ def Ecrire_chemin_cout(t, PCC, cout, pos_i):
         t.up()
         t.goto(-710, 315) #on se place plus bas que l'emplacement 1
         t.write("Cout : " + str(cout), move=True, align='left', font=('Georgia', 15, 'bold'))
+    rid_t(t)
 
 def rid_t(t):
     '''Fonction qui éloigne la tortue de la grille déssinée, en la place 
     tout en haut à gauche'''
     t.up() #on arrête de dessiner
     t.goto(-750, 400) #on se place en haut à gauche
-    t.done() #on mantient la fenêtre ouverte
-
-#____________APPLICATION___________________
-# print( ep_mur(grille, (1, 5), 'v', 3, 4) )
-# ajoute_coor(3, 4, 70)
-# n, m = 3, 4
-# Gr = Grille.creer_grille(n, m)
-# dessiner_grille(Gr, n, m, 70)
-#______________FIN_APPLICATION___________________
-
-
-
-
