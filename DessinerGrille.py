@@ -134,7 +134,7 @@ def DesssinerPCC(t, PCC, Gr, pas, color, cout, speed=11, emplacement = 1):
     t.speed(speed) #on ajuste la vitesse de la tortue
     t.up() #on arrête de dessiner
     t.goto(-750, 300) #on positionne la tortue à (-750, 300)
-    t.seth(0) #on orionte la tortue vers la droite
+    t.seth(0) #on oriente la tortue vers la droite
     for i in range(len(PCC) - 1): #on parcours les cellules jusqu'à l'avant dérnière
         ep = 0 #initialisation
         x, y = 0, 0 #initialisation

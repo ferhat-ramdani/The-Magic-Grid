@@ -24,3 +24,5 @@ j'ai modifié la partie 3 qst d. du rapport, j'ai fait des petites modifications
 j'ai enlevés les tests dans les classes, et toutes les importations inutiles <br>
 j'ai terminé la classe **APPLICATION** <br>
 j'ai modifié la classe Main, ne plus faire des modification sur cette classe SVP <br>
+J'ai termine d'ajouter les commentaires sur la classe Enrichir_Grille <br>
+Nous avons commentés toutes la classes du Projet <br>
