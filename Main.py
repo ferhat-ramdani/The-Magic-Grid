@@ -9,6 +9,7 @@ n, m = 4, 9
 pas = 150
 maGrille = Grille.creer_grille(n, m)
 DessinerGrille.dessiner_grille(t, maGrille, n, m, pas, 11)
+#si 
 # pcc_bel, cout_bel = PlusCoursChemin.plus_court_chemin(maGrille, n, m, 'bel')
 # Enrichir_Grille.enrichir(maGrille, pcc_bel)
 # Enrichir_Grille.adapter_dessin(t, maGrille, pcc_bel, cout_bel, "bel", 'white' , pas, 1)

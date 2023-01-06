@@ -26,20 +26,20 @@ def dijkstra(G,s):
 
 
 def bellman_ford(G, s):
-    d={k: float('inf') for k in G}  
-    P={}
-    d[s]=0   
-    fini=False
-    while not fini:
-        fini=True
-        for cel in G:
-            for mur in G[cel]:
-                cel_v, ep = G[cel][mur]  
-                if d[cel]+ep < d[cel_v]:
-                    d[cel_v] = d[cel]+ep
-                    P[cel_v]=cel
-                    fini=False
-    return d, P
+    d={k: float('inf') for k in G} #distances initiales
+    P={} #on initialise la liste des prédécesseurs
+    d[s]=0 #sommet de départ
+    fini=False #bouléan utilisé pour terminer la boucle while
+    while not fini: 
+        fini=True #on met fini à True, on le remet à False uniquement si on met à jour les distances
+        for cel in G: #parcours des cellules de la grille
+            for mur in G[cel]: #parcours des murs de chaque cellule
+                cel_v, ep = G[cel][mur] #on récupère la pos de la cellule adjacente, et l'épaisseur du mur
+                if d[cel]+ep < d[cel_v]: #si la nouvelle distance est meilleur
+                    d[cel_v] = d[cel]+ep #on met à jour la liste des distances
+                    P[cel_v]=cel #on met à jour la liste des prédécesseurs
+                    fini=False #on remet fini à Fasle pour continuer les itérations
+    return d, P #on retourne la liste d des distances, et P des prédécesseurs
 
 
 def plus_court_chemin(G, n, m, algo='dij'):

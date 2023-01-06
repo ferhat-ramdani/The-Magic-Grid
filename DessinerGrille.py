@@ -88,6 +88,9 @@ def dessiner_grille(t, grille, n, m, pas=100, speed=11):
     t.up() #on empêche la tortue de dessiner dérière elle
     t.goto(-750, 300) #on positionne la tortue à (-750, 300)
     t.down() #la tortue désormais trace le chemin dérière elle
+    wn = t.Screen()
+    wn.title("GRILLE MAGIQUE")
+    wn.setup(1.0, 1.0) #on ajuste les dimensions de la fenetre pour remplir l'écran
 
     #DESSIN DES MURS HORIZONTAUX
     for l in range(1, n+2): #parcours des lignes de la grille
