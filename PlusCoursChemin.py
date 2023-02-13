@@ -47,7 +47,6 @@ def plus_court_chemin(G, n, m, algo='dij'):
         d, P = bellman_ford(G, (1, 1)) # Application de l'algo Belman-Ford qui retourne la liste de distance et la liste de prédecesseurs
     else: #Sinon c'est celui de Dijkstra 
         d, P = dijkstra(G, (1, 1)) # Application de l'algo Dijkstra qui retourne la liste de distance et la liste de prédecesseurs
-    
     cout = d[(n, m)] # On recupere le cout du chemin en accédant à la derniere cellule de notre tableau d 
     cel = (n, m) #On recupere la derniere cellule de notre Grille
     c = [cel] # Création d'un Tableau avec comme premier élement la derniere cellule 
