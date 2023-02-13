@@ -1,21 +1,6 @@
-# PROJET_INFO3A
-projet portant sur la grille magique
-# Projet Collaboratif : Ramdani-Ahmim
+# Projet INFO3A : The Magic Grid
+Projet Collaboratif : Ramdani-Ahmim
 
+# Présentation
 
-# A Faire : 
-RIEN A FAIRE
-
-# Mise à jour:
-j'ai terminé de commenter la classe DessinerGrille <br>
-je vais modifier les noms des classes et fonctions une fois que tu aurai fini de commenter les classes <br>
-j'ai ajouté la classe **APPLICATION**, c'est là que je met les tests de toutes les fonctions de toutes les classes, je l'ai pas encore terminé <br>
-j'ai terminé de commenter la classe Bonus <br>
-j'ai terminé de commenter la classe PlusCoursChemin <br>
-j'ai modifié la partie 3 qst d. du rapport, j'ai fait des petites modifications sur la structure du rapport <br>
-j'ai enlevés les tests dans les classes, et toutes les importations inutiles <br>
-j'ai terminé la classe **APPLICATION** <br>
-j'ai modifié la classe Main, ne plus faire des modification sur cette classe SVP <br>
-J'ai termine d'ajouter les commentaires sur la classe Enrichir_Grille <br>
-Nous avons commentés toutes les classes du Projet <br>
-j'ai modifié Ecrire_chemin_cout <br>
+Dans ce projet, étant donné une grille en forme de rectangle composée de cellules séparées par des murs de différentes épaisseurs, nous visons à modéliser et parcourir les cellules d'une telle grille en utilisant des notions de graphs, de listes d'adjacences et des algorithms permettant de trouver le plus cours chemin d'un graph tel que l'algorithm de Bellman-Ford et l'algorithme de Dijkstra.
