@@ -1,4 +1,4 @@
-# Projet INFO3A : The Magic Grid
+# The Magic Grid
 Projet Collaboratif : Ramdani-Ahmim
 
 # Présentation
