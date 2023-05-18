@@ -42,7 +42,7 @@ Feel free to experiment with different grid configurations and wall lengths to o
 
 ## Authors
 
-- AHMIM Mohamed ([@Mohamed](https://github.com/mohamed-ahmim))
+- AHMIM Mohamed ([@Mohamed](https://github.com/MohamedAhmim))
 - RAMDANI Ferhat ([@Ferhat](https://github.com/ferhat-ramdani))
 
 
