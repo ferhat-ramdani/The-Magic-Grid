@@ -2,7 +2,7 @@
 
 ## Project Description
 
-Welcome to the Awesome Grid Modeling project! This project aims to model real-life objects using appropriate data structures, employ various programming techniques, and utilize famous algorithms such as Bellman-Ford and Dijkstra's algorithms to solve real-world problems.
+Welcome to the Magic Grid project! This project aims to model real-life objects using appropriate data structures, employ various programming techniques, and utilize famous algorithms such as Bellman-Ford and Dijkstra's algorithms to solve real-world problems.
 
 The main objective of this project is to navigate through a complex grid composed of cells with varying lengths of walls. The goal is to start from the top left cell and reach the bottom right cell by destroying the walls between adjacent cells. The challenge lies in finding the optimal combination of cells to minimize the effort required to destroy the walls, ensuring that the walls are as slim as possible.
 
@@ -18,7 +18,7 @@ As a bonus feature, we have implemented a heuristic algorithm to find a locally 
 
 ## Getting Started
 
-To get started with the Awesome Grid Modeling project, follow these steps:
+To get started with the Magic Grid project, follow these steps:
 
 1. Clone the project repository from GitHub: 
 `git clone https://github.com/ferhat-ramdani/The-Magic-Grid.git`
