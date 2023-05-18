@@ -21,11 +21,11 @@ As a bonus feature, we have implemented a heuristic algorithm to find a locally 
 To get started with the Awesome Grid Modeling project, follow these steps:
 
 1. Clone the project repository from GitHub: 
-`git clone https://github.com/your-username/awesome-grid-modeling.git`
+`git clone https://github.com/ferhat-ramdani/The-Magic-Grid.git`
 2. Install the required dependencies. Make sure you have Python installed on your machine.
 `pip install turtle`
 3. Navigate to the project directory:
-`cd awesome-grid-modeling`
+`cd The-Magic-Grid`
 4. Run the main Python file to execute the grid modeling program:
 `python main.py`
 
