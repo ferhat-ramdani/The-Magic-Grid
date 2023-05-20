@@ -27,7 +27,7 @@ To get started with the Magic Grid project, follow these steps:
 3. Navigate to the project directory:
 `cd The-Magic-Grid`
 4. Run the main Python file to execute the grid modeling program:
-`python main.py`
+`python Main.py`
 
 ## Usage
 
